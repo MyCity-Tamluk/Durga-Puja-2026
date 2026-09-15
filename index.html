@@ -599,133 +599,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .hub-subnav {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .hub-tab-btn {
-            background: rgba(0,0,0,0.7);
-            border: 2px solid var(--puja-gold);
-            color: white;
-            padding: 9px 18px;
-            border-radius: 22px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .hub-tab-btn.active, .hub-tab-btn:hover {
-            background: linear-gradient(135deg, #d90429, #ff6b35);
-            border-color: #fff;
-            transform: scale(1.06);
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
-        }
-
-        .diya-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
-            gap: 6px;
-            max-height: 40vh;
-            overflow-y: auto;
-            background: rgba(0,0,0,0.6);
-            padding: 16px;
-            border-radius: 14px;
-            border: 2px solid var(--puja-gold);
-            margin: 15px 0;
-            box-sizing: border-box;
-        }
-        .diya-btn {
-            background: #2a0505;
-            border: 1px solid #ffaa00;
-            border-radius: 8px;
-            padding: 7px 2px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .diya-btn:hover { transform: scale(1.15); }
-        .diya-btn.lit {
-            background: #ffcc00;
-            box-shadow: 0 0 14px #ffaa00;
-            border-color: #ffffff;
-        }
-
-        .dhunuchi-arena {
-            background: radial-gradient(circle, #450303 0%, #150000 100%);
-            border: 3px solid var(--puja-gold);
-            border-radius: 18px;
-            padding: 24px;
-            text-align: center;
-            max-width: 520px;
-            margin: 0 auto;
-            box-sizing: border-box;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-        .balance-bar-container {
-            width: 100%;
-            height: 20px;
-            background: rgba(255,255,255,0.25);
-            border-radius: 10px;
-            margin: 18px 0;
-            overflow: hidden;
-            position: relative;
-        }
-        .balance-fill {
-            height: 100%;
-            width: 50%;
-            background: linear-gradient(90deg, #10b981, #f59e0b, #ef4444);
-            transition: width 0.2s;
-        }
-
-        .sindoor-card {
-            background: radial-gradient(circle, #8a0918 0%, #250205 100%);
-            border: 3px solid var(--puja-gold);
-            border-radius: 18px;
-            padding: 26px;
-            text-align: center;
-            max-width: 520px;
-            margin: 0 auto;
-            box-sizing: border-box;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .random-quiz-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 22px;
-            border-radius: 14px;
-            text-align: center;
-            border: 2px solid var(--puja-gold);
-            max-width: 600px;
-            margin: 0 auto;
-            box-sizing: border-box;
-            width: 100%;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-        }
-        .random-quiz-card h3 { color: var(--puja-gold); font-size: 20px; margin-bottom: 16px; }
-        .quiz-options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        .quiz-opt-btn {
-            background: rgba(255, 255, 255, 0.18);
-            color: white;
-            border: 1px solid rgba(255, 204, 0, 0.5);
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        .quiz-opt-btn:hover { background: var(--puja-red); border-color: var(--puja-gold); transform: scale(1.03); }
-
         .about-us-content {
             font-size: 16px;
             line-height: 1.8;
@@ -1194,7 +1067,6 @@
             <div class="nav-menu-box">
                 <button class="nav-tab-btn active" id="btn-home" onclick="switchTab('home')">🏠 Home</button>
                 <button class="nav-tab-btn" id="btn-monuments" onclick="switchTab('monuments')">🏛️ Pandals</button>
-                <button class="nav-tab-btn" id="btn-fest-arena" onclick="switchTab('fest-arena')">🎉 Festival Arena</button>
                 <button class="nav-tab-btn" id="btn-transit-hub" onclick="switchTab('transit-hub')">🚦 Transit Hub</button>
                 <button class="nav-tab-btn" id="btn-food" onclick="switchTab('food')">🍲 Food Guide</button>
                 <button class="nav-tab-btn" id="btn-carnival" onclick="switchTab('carnival')">🎪 Carnival</button>
@@ -1248,7 +1120,7 @@
                 <div class="home-center-hero">
                     <div class="typing-text" id="main-heading">Subho Sharadiya & Happy Durga Puja!</div>
                     <div class="live-date">Autumn Festival | Durga Puja Celebration</div>
-                    <div class="subtitle" id="sub-heading">Explore Games, Voice Guide, Routes, Traffic & Pandals 👇</div>
+                    <div class="subtitle" id="sub-heading">Explore Voice Guide, Routes, Traffic & Pandals 👇</div>
                 </div>
                 
                 <!-- Live Working Countdown Timer -->
@@ -1348,61 +1220,6 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-
-        <!-- Combined Festival Arena Page (108 Diya, Dhunuchi Dance & Sindoor Khela) -->
-        <div class="app-view-panel" id="fest-arena-page-view">
-            <div class="page-header-row">
-                <h2>🎉 Festival Interactive Arena</h2>
-                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
-            </div>
-            
-            <div class="hub-subnav">
-                <button class="hub-tab-btn active" id="subbtn-diya" onclick="switchArenaSection('diya')">🪔 108 Diya Lighting (Sandhi Puja)</button>
-                <button class="hub-tab-btn" id="subbtn-dhunuchi" onclick="switchArenaSection('dhunuchi')">🔥 Dhunuchi Dance Arena</button>
-                <button class="hub-tab-btn" id="subbtn-sindoor" onclick="switchArenaSection('sindoor')">🌺 Sindoor Khela & Subho Bijoya</button>
-            </div>
-
-            <!-- Section 1: 108 Diya Lighting -->
-            <div id="arena-sec-diya" style="display: block; text-align: center;">
-                <p style="font-size: 15px; color: #f7d6d6;">Light all 108 holy Diyas during Sandhi Puja to receive divine blessings from Maa Chamunda!</p>
-                <h3 style="color: var(--puja-gold); margin: 10px 0; font-size: 20px;">Diyas Lit: <span id="diya-lit-count">0</span> / 108</h3>
-                <div class="diya-grid-container" id="diyaGridBox"></div>
-                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 12px; flex-wrap: wrap;">
-                    <button class="action-chip-btn" onclick="lightAllDiyas()">✨ Light All Instantly</button>
-                    <button class="action-chip-btn" style="background:#555;" onclick="resetDiyaGame()">🔄 Reset Diyas</button>
-                </div>
-            </div>
-
-            <!-- Section 2: Dhunuchi Dance Rhythm Arena -->
-            <div id="arena-sec-dhunuchi" style="display: none;">
-                <div class="dhunuchi-arena">
-                    <div style="font-size: 50px;">🏺🔥</div>
-                    <h3 style="color: var(--puja-gold); font-size: 20px;">Dhunuchi Balance Score: <span id="dhunuchiScore">0</span></h3>
-                    <p style="font-size: 14px; color: #ccc;">Keep tapping the beat buttons to maintain rhythm with the dhak without dropping the Dhunuchi!</p>
-                    <div class="balance-bar-container">
-                        <div class="balance-fill" id="dhunuchiBalanceFill"></div>
-                    </div>
-                    <div style="display:flex; gap:10px; justify-content:center; flex-wrap: wrap;">
-                        <button class="action-chip-btn" onclick="tapDhunuchiBeat('left')">◀️ Left Step</button>
-                        <button class="action-chip-btn" onclick="tapDhunuchiBeat('spin')">🔄 Spin Dance</button>
-                        <button class="action-chip-btn" onclick="tapDhunuchiBeat('right')">Right Step ▶️</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3: Sindoor Khela & Subho Bijoya -->
-            <div id="arena-sec-sindoor" style="display: none;">
-                <div class="sindoor-card">
-                    <div style="font-size: 55px; margin-bottom: 10px;">🔴 🪔 🍬</div>
-                    <h3 style="color: var(--puja-gold); font-size: 20px;">Subho Bijoya & Sindoor Khela</h3>
-                    <p style="color: #ffe6e6; font-size: 14px;">Offer traditional vermilion (Sindoor) to Maa Durga, share sweet treats, and exchange warm Subho Bijoya greetings with everyone!</p>
-                    <div style="display:flex; gap:10px; justify-content:center; margin-top:18px; flex-wrap:wrap;">
-                        <button class="action-chip-btn" onclick="triggerSindoorBlessing()">🔴 Offer Sindoor</button>
-                        <button class="action-chip-btn" style="background: linear-gradient(135deg, #10b981, #059669);" onclick="offerVirtualSweet()">🍬 Feed Sweet</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1510,19 +1327,22 @@
             </div>
             <div class="food-grid">
                 <div class="info-card">
-                    <h3>🍢 Iconic Rolls & Mughlai</h3>
+                    <h3>🍢 Iconic Rolls, Cutlets & Mughlai</h3>
                     <p><b>Kusum Rolls & Hot Kathi Roll:</b> Park Street (Classic Double Egg Chicken Roll).</p>
                     <p><b>Arsalan & Shiraz:</b> Park Circus (Mutton Biryani & Chaap).</p>
+                    <p><b>De De Cutlet & Chittaranjan Mistri:</b> Hedoa & College Street (Famous Fish Fry, Cutlets & Mughlai).</p>
                 </div>
                 <div class="info-card">
-                    <h3>🥘 Traditional Bengali Food</h3>
+                    <h3>🥘 Traditional Bengali Food & Fine Dining</h3>
                     <p><b>Golbari:</b> Shyambazar 5-Point (Legendary Kosha Mangsho & Parota).</p>
-                    <p><b>Bhojohori Manna:</b> Ilish Bhapa, Daab Chingri & Chitol Muitha.</p>
+                    <p><b>Bhojohori Manna & Oh! Calcutta:</b> Elgin Road (Ilish Bhapa, Daab Chingri & Vhetki Paturi).</p>
+                    <p><b>Mainland China:</b> Park Street (Asian & Chinese Delights during Hopping).</p>
                 </div>
                 <div class="info-card">
-                    <h3>🍨 Street Snacks & Sweets</h3>
-                    <p><b>Vivekananda Park:</b> South Kolkata's best Puchka & Churmur.</p>
-                    <p><b>Paramount Sherbets:</b> College Square (Daab Sherbet since 1918).</p>
+                    <h3>🍨 Legendary Sweets & Street Snacks</h3>
+                    <p><b>Nalin Chandra Das & Sons:</b> Sovabazar (Jolbhora Sandesh & Baked Rasgulla).</p>
+                    <p><b>Balaram Mullick & Radharaman Mullick:</b> Bhowanipore (Chocolate Sandesh & Fusion Sweets).</p>
+                    <p><b>Vivekananda Park & Paramount:</b> South Kolkata Puchka & College Square Daab Sherbet (since 1918).</p>
                 </div>
             </div>
         </div>
@@ -2332,16 +2152,6 @@
             });
         }
 
-        function switchArenaSection(secId) {
-            ['diya', 'dhunuchi', 'sindoor'].forEach(id => {
-                const el = document.getElementById('arena-sec-' + id);
-                const btn = document.getElementById('subbtn-' + id);
-                if (el) el.style.display = (id === secId) ? 'block' : 'none';
-                if (btn) btn.classList.toggle('active', id === secId);
-            });
-            if(secId === 'diya') initDiyaGame();
-        }
-
         function switchGreetingSection(secId) {
             ['cardmaker', 'booth'].forEach(id => {
                 const el = document.getElementById('greeting-sec-' + id);
@@ -2360,82 +2170,6 @@
                 if (el) el.style.display = (id === secId) ? 'block' : 'none';
                 if (btn) btn.classList.toggle('active', id === secId);
             });
-        }
-
-        function triggerSindoorBlessing() {
-            confetti({
-                particleCount: 150,
-                spread: 80,
-                origin: { y: 0.6 },
-                colors: ['#d90429', '#ff0055', '#ff9900']
-            });
-            alert("🌺 Sindoor blessing offered! Wishing you and your loved ones a blessed Subho Bijoya!");
-        }
-
-        function offerVirtualSweet() {
-            alert("🍬 Sweets offered! May sweetness and prosperity illuminate your festive days. Subho Bijoya!");
-        }
-
-        let litDiyas = new Set();
-        function initDiyaGame() {
-            const container = document.getElementById('diyaGridBox');
-            if (!container) return;
-            container.innerHTML = "";
-            for (let i = 1; i <= 108; i++) {
-                const btn = document.createElement('button');
-                btn.className = 'diya-btn' + (litDiyas.has(i) ? ' lit' : '');
-                btn.innerHTML = litDiyas.has(i) ? '🪔' : '🕯️';
-                btn.title = `Diya #${i}`;
-                btn.onclick = () => toggleDiya(i, btn);
-                container.appendChild(btn);
-            }
-            document.getElementById('diya-lit-count').innerText = litDiyas.size;
-        }
-
-        function toggleDiya(index, btn) {
-            if (litDiyas.has(index)) {
-                litDiyas.delete(index);
-                btn.classList.remove('lit');
-                btn.innerHTML = '🕯️';
-            } else {
-                litDiyas.add(index);
-                btn.classList.add('lit');
-                btn.innerHTML = '🪔';
-            }
-            document.getElementById('diya-lit-count').innerText = litDiyas.size;
-            if (litDiyas.size === 108) {
-                confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
-                alert("॥ Jai Maa Chamunda ॥ All 108 Holy Diyas are lit! May your life be illuminated with divine happiness!");
-            }
-        }
-
-        function lightAllDiyas() {
-            for (let i = 1; i <= 108; i++) litDiyas.add(i);
-            initDiyaGame();
-            confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
-        }
-
-        function resetDiyaGame() {
-            litDiyas.clear();
-            initDiyaGame();
-        }
-
-        let dhunuchiScore = 0;
-        let dhunuchiBalance = 50;
-        function tapDhunuchiBeat(type) {
-            dhunuchiScore += 10;
-            document.getElementById('dhunuchiScore').innerText = dhunuchiScore;
-            
-            if (type === 'left') dhunuchiBalance = Math.max(15, dhunuchiBalance - 12);
-            else if (type === 'right') dhunuchiBalance = Math.min(85, dhunuchiBalance + 12);
-            else dhunuchiBalance = 50;
-
-            const fill = document.getElementById('dhunuchiBalanceFill');
-            if (fill) fill.style.width = dhunuchiBalance + '%';
-
-            if (dhunuchiScore > 0 && dhunuchiScore % 100 === 0) {
-                confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
-            }
         }
 
         function toggleWishlist(pandalName) {
@@ -2755,16 +2489,16 @@
 
         const appTranslations = {
             en: {
-                homeBtn: "🏠 Home", monumentsBtn: "🏛️ Pandals", festArenaBtn: "🎉 Festival Arena", transitHubBtn: "🚦 Transit Hub", foodBtn: "🍲 Food Guide", carnivalBtn: "🎪 Carnival", sosBtn: "🚨 SOS", bhogBtn: "🍛 Bhog", greetingBoothBtn: "💌 Greeting & Booth", tributeBtn: "🌺 Pushpanjali", quizBtn: "⚡ Quiz", aboutBtn: "ℹ️ About", sharedMediaBtn: "📸 Gallery",
+                homeBtn: "🏠 Home", monumentsBtn: "🏛️ Pandals", transitHubBtn: "🚦 Transit Hub", foodBtn: "🍲 Food Guide", carnivalBtn: "🎪 Carnival", sosBtn: "🚨 SOS", bhogBtn: "🍛 Bhog", greetingBoothBtn: "💌 Greeting & Booth", tributeBtn: "🌺 Pushpanjali", quizBtn: "⚡ Quiz", aboutBtn: "ℹ️ About", sharedMediaBtn: "📸 Gallery",
                 mainHeading: "Subho Sharadiya & Happy Durga Puja!",
-                subHeading: "Explore Games, Voice Guide, Routes, Traffic & Pandals 👇",
+                subHeading: "Explore Voice Guide, Routes, Traffic & Pandals 👇",
                 listTitle1: "Durga Puja 5-Day Sacred Schedule",
                 listTitle4: "Family of Maa Durga",
                 newsSectionTitle: "📰 Live Puja News & Pandal Updates",
                 creatorText: "Created by Madan Basuli"
             },
             bn: {
-                homeBtn: "🏠 হোম", monumentsBtn: "🏛️ মণ্ডপ", festArenaBtn: "🎉 উৎসব", transitHubBtn: "🚦 ট্রাভেল", foodBtn: "🍲 খাবার", carnivalBtn: "🎪 কার্নিভাল", sosBtn: "🚨 জরুরি", bhogBtn: "🍛 ভোগ", greetingBoothBtn: "💌 কার্ড ও বুথ", tributeBtn: "🌺 অঞ্জলি", quizBtn: "⚡ কুইজ", aboutBtn: "ℹ️ সম্পর্কে", sharedMediaBtn: "📸 গ্যালারি",
+                homeBtn: "🏠 হোম", monumentsBtn: "🏛️ মণ্ডপ", transitHubBtn: "🚦 ট্রাভেল", foodBtn: "🍲 খাবার", carnivalBtn: "🎪 কার্নিভাল", sosBtn: "🚨 জরুরি", bhogBtn: "🍛 ভোগ", greetingBoothBtn: "💌 কার্ড ও বুথ", tributeBtn: "🌺 অঞ্জলি", quizBtn: "⚡ কুইজ", aboutBtn: "ℹ️ সম্পর্কে", sharedMediaBtn: "📸 গ্যালারি",
                 mainHeading: "॥ শুভ দুর্গোৎসব ও শুভ শারদীয়া ॥",
                 subHeading: "ভয়েস গাইড, ট্রাভেল রুট, মেট্রো, ট্রাফিক গাইড ও মণ্ডপ পরিক্রমা 👇",
                 listTitle1: "Durga Puja 5-Day Sacred Schedule",
@@ -2773,7 +2507,7 @@
                 creatorText: "তৈরি করেছেন: মদন বাসুলি (Madan Basuli)"
             },
             hi: {
-                homeBtn: "🏠 होम", monumentsBtn: "🏛️ पंडाल", festArenaBtn: "🎉 उत्सव", transitHubBtn: "🚦 यात्रा", foodBtn: "🍲 भोजन", carnivalBtn: "🎪 कार्निवल", sosBtn: "🚨 हेल्प", bhogBtn: "🍛 भोग", greetingBoothBtn: "💌 कार्ड व बूथ", tributeBtn: "🌺 पुष्पांजलि", quizBtn: "⚡ क्विज़", aboutBtn: "ℹ️ परिचय", sharedMediaBtn: "📸 गैलरी",
+                homeBtn: "🏠 होम", monumentsBtn: "🏛️ पंडाल", transitHubBtn: "🚦 यात्रा", foodBtn: "🍲 भोजन", carnivalBtn: "🎪 कार्निवल", sosBtn: "🚨 हेल्प", bhogBtn: "🍛 भोग", greetingBoothBtn: "💌 कार्ड व बूथ", tributeBtn: "🌺 पुष्पांजलि", quizBtn: "⚡ क्विज़", aboutBtn: "ℹ️ परिचय", sharedMediaBtn: "📸 गैलरी",
                 mainHeading: "॥ शुभ शारदीय दुर्गा पूजा महोत्सव ॥",
                 subHeading: "वॉइस गाइड, रूट प्लानर, मेट्रो समय, ट्रैफिक गाइड व भव्य पंडाल दर्शन 👇",
                 listTitle1: "Durga Puja 5-Day Sacred Schedule",
@@ -2789,7 +2523,6 @@
 
             document.getElementById('btn-home').innerText = t.homeBtn;
             document.getElementById('btn-monuments').innerText = t.monumentsBtn;
-            document.getElementById('btn-fest-arena').innerText = t.festArenaBtn;
             document.getElementById('btn-transit-hub').innerText = t.transitHubBtn;
             document.getElementById('btn-food').innerText = t.foodBtn;
             document.getElementById('btn-carnival').innerText = t.carnivalBtn;
@@ -2829,7 +2562,6 @@
             drawPhotoBoothCanvas();
             saveWishlistToStorage();
             drawGreetingCardCanvas();
-            initDiyaGame();
 
             changeLanguage();
         };
@@ -2838,7 +2570,6 @@
             const views = [
                 'home-content-view', 
                 'monuments-page-view', 
-                'fest-arena-page-view', 
                 'transit-hub-page-view', 
                 'food-page-view', 
                 'carnival-page-view', 
@@ -2857,7 +2588,7 @@
                 if (el) el.style.display = 'none';
             });
 
-            const tabs = ['home', 'monuments', 'fest-arena', 'transit-hub', 'food', 'carnival', 'sos', 'bhog', 'greeting-booth', 'tribute', 'random-quiz', 'about', 'shared-media'];
+            const tabs = ['home', 'monuments', 'transit-hub', 'food', 'carnival', 'sos', 'bhog', 'greeting-booth', 'tribute', 'random-quiz', 'about', 'shared-media'];
             tabs.forEach(t => {
                 let btn = document.getElementById('btn-' + t);
                 if (btn) btn.classList.remove('active');
@@ -2875,8 +2606,7 @@
             let targetViewId = tabName === 'home' ? 'home-content-view' : 
                                (tabName === 'about' ? 'about-us-page-view' : 
                                (tabName === 'shared-media' ? 'shared-media-page-view' : 
-                               (tabName === 'fest-arena' ? 'fest-arena-page-view' : 
-                               (tabName === 'transit-hub' ? 'transit-hub-page-view' : tabName + '-page-view'))));
+                               (tabName === 'transit-hub' ? 'transit-hub-page-view' : tabName + '-page-view')));
 
             let targetView = document.getElementById(targetViewId);
             if (targetView) targetView.style.display = 'flex';
@@ -2889,7 +2619,6 @@
             if (tabName === 'random-quiz') loadRandomQuiz();
             if (tabName === 'monuments') renderMonuments();
             if (tabName === 'greeting-booth') switchGreetingSection('cardmaker');
-            if (tabName === 'fest-arena') switchArenaSection('diya');
             if (tabName === 'transit-hub') switchTransitSection('hopping-route');
         }
 
