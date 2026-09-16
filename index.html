@@ -624,11 +624,12 @@
             box-sizing: border-box;
             width: 100%;
             transition: 0.3s;
+            cursor: pointer;
         }
         .schedule-item-card:hover {
             border-color: var(--puja-gold);
-            background: rgba(217, 4, 41, 0.25);
-            transform: scale(1.01);
+            background: rgba(217, 4, 41, 0.35);
+            transform: scale(1.015);
         }
         .schedule-title-line {
             display: flex;
@@ -722,17 +723,22 @@
         }
         .deity-card:hover { transform: translateY(-4px); border-color: var(--puja-gold); background: rgba(217,4,41,0.25); }
         .deity-avatar-box {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
             background: linear-gradient(135deg, #d90429, #ff6b35);
             border: 2px solid var(--puja-gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 35px;
+            overflow: hidden;
             margin-bottom: 8px;
             box-shadow: 0 0 15px rgba(255,204,0,0.6);
+        }
+        .deity-avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .deity-card h4 {
             margin: 4px 0 2px 0;
@@ -1015,8 +1021,9 @@
 </head>
 <body>
 
+    <!-- Auto-Play Background Music -->
     <audio id="bg-music" loop autoplay preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-traditional-music-112191.mp3" type="audio/mpeg">
+        <source src="Dugga Elo.mp3?filename=indian-traditional-music-112191.mp3" type="audio/mpeg">
     </audio>
 
     <div id="photo-page">
@@ -1038,8 +1045,8 @@
             <div class="sound-jukebox-combo hover-glow-item" title="Puja Sound & Jukebox Player">
                 <span>🎵</span>
                 <select id="jukeboxSelect" onchange="changeJukeboxSong()">
-                    <option value="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-traditional-music-112191.mp3">Dhak Melody</option>
-                    <option value="https://actions.google.com/sounds/v1/ambiences/bell_ringing_hindu_temple.ogg">Arati Bells</option>
+                    <option value="Dugga Elo.mp3">Dugga Elo</option>
+                    <option value="Agomoni Gaan 2026.mp3">Agomoni Gaan 2026</option>
                 </select>
                 <button class="music-play-btn" id="music-toggle-btn" onclick="togglePlayMusic()">⏸️</button>
                 <span style="font-size: 12px; margin-left: 3px;">🔉</span>
@@ -1110,7 +1117,7 @@
 
                 <div class="scrollable-lists">
                     <div class="schedule-box-card">
-                        <h3 id="list-title-1">Durga Puja 5-Day Sacred Schedule</h3>
+                        <h3 id="list-title-1">Durga Puja 5-Day Sacred Schedule (Click any day for Live Stream)</h3>
                         <ul class="schedule-list-ul" id="puja-days-ul"></ul>
                     </div>
 
@@ -1118,37 +1125,49 @@
                         <h3 id="list-title-4">Family of Maa Durga</h3>
                         <div class="family-cards-grid">
                             <div class="deity-card">
-                                <div class="deity-avatar-box">🪷</div>
+                                <div class="deity-avatar-box">
+                                    <img src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=200&q=80" alt="Goddess Lakshmi">
+                                </div>
                                 <h4>Goddess Lakshmi</h4>
                                 <span class="deity-tag">Giver of Wealth & Light</span>
                                 <p>Mount: White Owl. Symbol of spiritual purity, good fortune, and abundant light.</p>
                             </div>
                             <div class="deity-card">
-                                <div class="deity-avatar-box">🦢</div>
+                                <div class="deity-avatar-box">
+                                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80" alt="Goddess Saraswati">
+                                </div>
                                 <h4>Goddess Saraswati</h4>
                                 <span class="deity-tag">Wisdom & Music</span>
                                 <p>Mount: Sacred Swan. Holds the Veena and Vedas, bestowing creative arts and knowledge.</p>
                             </div>
                             <div class="deity-card">
-                                <div class="deity-avatar-box">🐘</div>
+                                <div class="deity-avatar-box">
+                                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=200&q=80" alt="Lord Ganesha">
+                                </div>
                                 <h4>Lord Ganesha</h4>
                                 <span class="deity-tag">Remover of Obstacles</span>
                                 <p>Mount: Krauncha (Mouse). Harbinger of auspicious beginnings and intellect.</p>
                             </div>
                             <div class="deity-card">
-                                <div class="deity-avatar-box">🦚</div>
+                                <div class="deity-avatar-box">
+                                    <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=200&q=80" alt="Lord Kartikeya">
+                                </div>
                                 <h4>Lord Kartikeya</h4>
                                 <span class="deity-tag">Supreme Commander</span>
                                 <p>Mount: Paravani (Peacock). Embodiment of courage, valor, and youthful divine strength.</p>
                             </div>
                             <div class="deity-card">
-                                <div class="deity-avatar-box">🦁</div>
+                                <div class="deity-avatar-box">
+                                    <img src="https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=200&q=80" alt="The Divine Lion">
+                                </div>
                                 <h4>The Divine Lion</h4>
                                 <span class="deity-tag">Devi's Mount (Vahana)</span>
                                 <p>Symbol of royal bravery, fearless power, and determination overcoming all evils.</p>
                             </div>
                             <div class="deity-card">
-                                <div class="deity-avatar-box">🔱</div>
+                                <div class="deity-avatar-box">
+                                    <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=200&q=80" alt="Mahishasura">
+                                </div>
                                 <h4>Mahishasura</h4>
                                 <span class="deity-tag">Subdued Darkness</span>
                                 <p>The buffalo demon representing arrogance and ego, defeated by Mother Durga's trident.</p>
@@ -1161,6 +1180,17 @@
                         <div class="live-news-cards-container" id="live-news-container"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Sacred Day Live Stream Page View -->
+        <div class="app-view-panel" id="sacred-day-detail-page-view">
+            <div class="page-header-row">
+                <h2 id="sacred-day-page-title">📺 Sacred Day Live Stream</h2>
+                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
+            </div>
+            <div id="sacred-day-content-box" style="font-size: 15px; line-height: 1.8; color: #fcebeb; text-align: center;">
+                <!-- Dynamic Content injected via JS -->
             </div>
         </div>
 
@@ -1870,7 +1900,7 @@
             {
                 name: "College Square Daab Sherbet & Street Hub",
                 type: "Famous Heritage Street Drink",
-                desc: "Serving refreshing natural coconut sherbet since 1918 near College Square pandals[cite: 1].",
+                desc: "Serving refreshing natural coconut sherbet since 1918 near College Square pandals.",
                 menu: [
                     { item: "Classic Daab Sherbet (Coconut Water & Malai)", price: "₹90" },
                     { item: "Royal Rose Daab Drink", price: "₹110" },
@@ -1938,7 +1968,8 @@
                 name: { en: "Mahalaya (Invocation of Devi)", bn: "মহালয়া (দেবীপক্ষের সূচনা ও চণ্ডীপাঠ)", hi: "महालया (देवी पक्ष आरंभ)" },
                 desc: { en: "Beginning of Devi Paksha & Birendra Krishna Bhadra Chandi Path", bn: "ভোর ৪টায় বীরেন্দ্রকৃষ্ণ ভদ্রের চণ্ডীপাঠ ও চক্ষুদান", hi: "चंडी पाठ एवं पितृ विसर्जन" },
                 targetYear: 2026, targetMonth: 9, targetDay: 10,
-                dateDisplay: { en: "10 Oct 2026, Saturday", bn: "১০ অক্টোবর ২০২৬, শনিবার", hi: "10 अक्टूबर 2026, शनिवार" }
+                dateDisplay: { en: "10 Oct 2026, Saturday", bn: "১০ অক্টোবর ২০২৬, শনিবার", hi: "10 अक्टूबर 2026, शनिवार" },
+                youtubeEmbed: "https://www.youtube.com/"
             },
             {
                 key: "sasthi",
@@ -1946,7 +1977,8 @@
                 name: { en: "Maha Sasthi (Bodhon & Kalparambha)", bn: "মহাষষ্ঠী (দেবীর বোধন ও আমন্ত্রণ)", hi: "महा षष्ठी (देवी का बोधन)" },
                 desc: { en: "Awakening of Maa Durga & public unveiling of all pandals", bn: "দেবী দুর্গার অধিবাস, আমন্ত্রণ ও মণ্ডপ উন্মোচন", hi: "मां दुर्गा का आह्वान एवं पंडाल उद्घाटन" },
                 targetYear: 2026, targetMonth: 9, targetDay: 16,
-                dateDisplay: { en: "16 Oct 2026, Friday", bn: "১৬ অক্টোবর ২০২৬, শুক্রবার", hi: "16 अक्टूबर 2026, शुक्रवार" }
+                dateDisplay: { en: "16 Oct 2026, Friday", bn: "১৬ অক্টোবর ২০২৬, শুক্রবার", hi: "16 अक्टूबर 2026, शुक्रवार" },
+                youtubeEmbed: "https://www.youtube.com/watch?v=72jRjgxhBB0"
             },
             {
                 key: "saptami",
@@ -1954,7 +1986,8 @@
                 name: { en: "Maha Saptami (Nabapatrika Snan)", bn: "মহাসপ্তমী (নবপত্রিকা স্নান ও পূজা)", hi: "महा सप्तमी (नवपत्रिका प्रवेश)" },
                 desc: { en: "Kola Bou bathing at riverbanks and full ritual worship starts", bn: "ভোরে গঙ্গার ঘাটে কলাবউ স্নান ও প্রধান পূজা আরম্ভ", hi: "पवित्र स्नान एवं विस्तृत पूजा अनुष्ठान" },
                 targetYear: 2026, targetMonth: 9, targetDay: 17,
-                dateDisplay: { en: "17 Oct 2026, Saturday", bn: "১৭ অক্টোবর ২০২৬, শনিবার", hi: "17 अक्टूबर 2026, शनिवार" }
+                dateDisplay: { en: "17 Oct 2026, Saturday", bn: "১৭ অক্টোবর ২০২৬, শনিবার", hi: "17 अक्टूबर 2026, शनिवार" },
+                youtubeEmbed: "https://www.youtube.com/embed/jfKfPfyJRdk"
             },
             {
                 key: "ashtami",
@@ -1962,7 +1995,8 @@
                 name: { en: "Maha Ashtami (Kumari Puja & Sandhi Puja)", bn: "মহাঅষ্টমী (কুমারী পূজা ও মহাপ্রার্থনা)", hi: "महा अष्टमी (कुमारी पूजा)" },
                 desc: { en: "Sacred Pushpanjali, Kumari Puja & 108 Lotuses Sandhi Puja", bn: "সকালবেলার মহা অঞ্জলি ও ১০৮ পদ্মের ঐতিহাসিক সন্ধিপূজা", hi: "भव्य पुष्पांजलि एवं 108 दीप संधि पूजा" },
                 targetYear: 2026, targetMonth: 9, targetDay: 19,
-                dateDisplay: { en: "19 Oct 2026, Monday", bn: "১৯ অক্টোবর ২০২৬, সোমবার", hi: "19 अक्टूबर 2026, सोमवार" }
+                dateDisplay: { en: "19 Oct 2026, Monday", bn: "১৯ অক্টোবর ২০২৬, সোমবার", hi: "19 अक्टूबर 2026, सोमवार" },
+                youtubeEmbed: "https://www.youtube.com/embed/5qap5aO4i9A"
             },
             {
                 key: "navami",
@@ -1970,7 +2004,8 @@
                 name: { en: "Maha Navami (Navami Homa & Arati)", bn: "মহানবমী (নবমী হোম ও ধুনুচি আরতি)", hi: "महा Navमी (हवन एवं महाआरती)" },
                 desc: { en: "Grand Navami Yajna, ecstatic Dhunuchi Dance & Night Carnivals", bn: "মহাযজ্ঞ সম্পাদন ও গভীর রাত পর্যন্ত জমজমাট ধুনুচি নাচ", hi: "महा यज्ञ एवं भव्य सांस्कृतिक उत्सव" },
                 targetYear: 2026, targetMonth: 9, targetDay: 20,
-                dateDisplay: { en: "20 Oct 2026, Tuesday", bn: "২০ অক্টোবর ২০২৬, মঙ্গলবার", hi: "20 अक्टूबर 2026, मंगलवार" }
+                dateDisplay: { en: "20 Oct 2026, Tuesday", bn: "২০ অক্টোবর ২০২৬, মঙ্গলবার", hi: "20 अक्टूबर 2026, मंगलवार" },
+                youtubeEmbed: "https://www.youtube.com/embed/jfKfPfyJRdk"
             },
             {
                 key: "dashami",
@@ -1978,7 +2013,8 @@
                 name: { en: "Vijaya Dashami (Sindoor Khela & Visarjan)", bn: "বিজয়া দশমী (সিঁদুর খেলা ও দেবী বিসর্জন)", hi: "विजयादशमी (सिन्दूर खेला व विसर्जन)" },
                 desc: { en: "Auspicious Sindoor Khela, Mother Durga's farewell and Visarjan", bn: "সধবাদের সিঁদুর খেলা, মিষ্টিমুখ ও দেবীর প্রতিমা বিসর্জন", hi: "सिन्दूर खेला, विसर्जन एवं विजया मिलन" },
                 targetYear: 2026, targetMonth: 9, targetDay: 21,
-                dateDisplay: { en: "21 Oct 2026, Wednesday", bn: "২১ অক্টোবর ২০২৬, বুধবার", hi: "21 अक्टूबर 2026, बुधवार" }
+                dateDisplay: { en: "21 Oct 2026, Wednesday", bn: "২১ অক্টোবর ২০২৬, বুধবার", hi: "21 अक्टूबर 2026, बुधवार" },
+                youtubeEmbed: "https://www.youtube.com/embed/5qap5aO4i9A"
             }
         ];
 
@@ -2017,6 +2053,7 @@
 
                 const li = document.createElement('li');
                 li.className = "schedule-item-card";
+                li.onclick = () => openSacredDayDetail(item.key);
                 li.innerHTML = `
                     <div class="schedule-title-line">
                         <span style="font-size: 18px;">${item.icon}</span>
@@ -2028,10 +2065,33 @@
                     <div class="schedule-meta-line">
                         <span class="schedule-date-badge">📅 ${item.dateDisplay[lang] || item.dateDisplay.en}</span>
                         <span>${item.desc[lang] || item.desc.en}</span>
+                        <span style="color: var(--puja-gold); font-size: 12px; margin-top: 4px; font-weight: bold;">▶️ Click to watch Live YouTube Stream & Details</span>
                     </div>
                 `;
                 ul.appendChild(li);
             });
+        }
+
+        function openSacredDayDetail(dayKey) {
+            let dayData = sacredPujaDates.find(d => d.key === dayKey);
+            if (!dayData) return;
+
+            const lang = document.getElementById('languageSelect') ? document.getElementById('languageSelect').value : 'en';
+            document.getElementById('sacred-day-page-title').innerText = `${dayData.icon} ${dayData.name[lang] || dayData.name.en}`;
+
+            let contentBox = document.getElementById('sacred-day-content-box');
+            contentBox.innerHTML = `
+                <p style="font-size: 16px; color: var(--puja-gold); font-weight: bold;">📅 Date: ${dayData.dateDisplay[lang] || dayData.dateDisplay.en}</p>
+                <p style="font-size: 15px; margin-bottom: 20px;">${dayData.desc[lang] || dayData.desc.en}</p>
+                
+                <h3 style="color: var(--puja-gold); margin-bottom: 10px;">🔴 Live YouTube Telecast & Ritual Stream</h3>
+                <div style="position: relative; width: 100%; max-width: 700px; height: 380px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 2px solid var(--puja-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+                    <iframe src="${dayData.youtubeEmbed}" title="Live YouTube Stream" style="width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                </div>
+                <p style="margin-top: 15px; font-size: 13px; color: #ffdca8;">Experience live dhak beats, arati, and sacred mantras directly from prominent puja pandals.</p>
+            `;
+
+            switchTab('sacred-day-detail');
         }
 
         function savePandalsToStorage() { localStorage.setItem('portal_pandals', JSON.stringify(pandalsList)); }
@@ -2735,7 +2795,7 @@
                 homeBtn: "🏠 Home", monumentsBtn: "🏛️ Pandals", transitHubBtn: "🚦 Transit Hub", foodBtn: "🍲 Food Guide", carnivalBtn: "🎪 Carnival", sosBtn: "🚨 SOS", bhogBtn: "🍛 Bhog", greetingBoothBtn: "💌 Greeting & Booth", tributeBtn: "🌺 Pushpanjali", quizBtn: "⚡ Quiz", aboutBtn: "ℹ️ About", sharedMediaBtn: "📸 Gallery",
                 mainHeading: "Subho Sharadiya & Happy Durga Puja!",
                 subHeading: "Explore Voice Guide, Routes, Traffic & Pandals 👇",
-                listTitle1: "Durga Puja 5-Day Sacred Schedule",
+                listTitle1: "Durga Puja 5-Day Sacred Schedule (Click any day for Live Stream)",
                 listTitle4: "Family of Maa Durga",
                 newsSectionTitle: "📰 Live Puja News & Pandal Updates",
                 creatorText: "Created by Madan Basuli"
@@ -2744,7 +2804,7 @@
                 homeBtn: "🏠 হোম", monumentsBtn: "🏛️ মণ্ডপ", transitHubBtn: "🚦 ট্রাভেল", foodBtn: "🍲 খাবার", carnivalBtn: "🎪 কার্নিভাল", sosBtn: "🚨 জরুরি", bhogBtn: "🍛 ভোগ", greetingBoothBtn: "💌 কার্ড ও বুথ", tributeBtn: "🌺 অঞ্জলি", quizBtn: "⚡ কুইজ", aboutBtn: "ℹ️ সম্পর্কে", sharedMediaBtn: "📸 গ্যালারি",
                 mainHeading: "॥ শুভ দুর্গোৎসব ও শুভ শারদীয়া ॥",
                 subHeading: "ভয়েস গাইড, ট্রাভেল রুট, মেট্রো, ট্রাফিক গাইড ও মণ্ডপ পরিক্রমা 👇",
-                listTitle1: "Durga Puja 5-Day Sacred Schedule",
+                listTitle1: "Durga Puja 5-Day Sacred Schedule (যে কোনো দিনে ক্লিক করে লাইভ দেখুন)",
                 listTitle4: "মা দুর্গা ও তাঁর সপরিবার",
                 newsSectionTitle: "📰 Live Puja News & Pandal Updates",
                 creatorText: "তৈরি করেছেন: মদন বাসুলি (Madan Basuli)"
@@ -2753,7 +2813,7 @@
                 homeBtn: "🏠 होम", monumentsBtn: "🏛️ पंडाल", transitHubBtn: "🚦 यात्रा", foodBtn: "🍲 भोजन", carnivalBtn: "🎪 कार्निवल", sosBtn: "🚨 हेल्प", bhogBtn: "🍛 भोग", greetingBoothBtn: "💌 कार्ड व बूथ", tributeBtn: "🌺 पुष्पांजलि", quizBtn: "⚡ क्विज़", aboutBtn: "ℹ️ परिचय", sharedMediaBtn: "📸 गैलरी",
                 mainHeading: "॥ शुभ शारदीय दुर्गा पूजा महोत्सव ॥",
                 subHeading: "वॉइस गाइड, रूट प्लानर, मेट्रो समय, ट्रैफिक गाइड व भव्य पंडाल दर्शन 👇",
-                listTitle1: "Durga Puja 5-Day Sacred Schedule",
+                listTitle1: "Durga Puja 5-Day Sacred Schedule (लाइव स्ट्रीम हेतु किसी भी दिन पर क्लिक करें)",
                 listTitle4: "मां दुर्गा का दिव्य परिवार",
                 newsSectionTitle: "📰 Live Puja News & Pandal Updates",
                 creatorText: "निर्माता: मदन बसुली (Madan Basuli)"
@@ -2826,7 +2886,8 @@
                 'random-quiz-page-view', 
                 'about-us-page-view', 
                 'shared-media-page-view',
-                'pandal-detail-page-view'
+                'pandal-detail-page-view',
+                'sacred-day-detail-page-view'
             ];
 
             views.forEach(vId => {
@@ -2842,6 +2903,12 @@
 
             if(tabName === 'pandal-detail') {
                 let targetView = document.getElementById('pandal-detail-page-view');
+                if (targetView) targetView.style.display = 'flex';
+                return;
+            }
+
+            if(tabName === 'sacred-day-detail') {
+                let targetView = document.getElementById('sacred-day-detail-page-view');
                 if (targetView) targetView.style.display = 'flex';
                 return;
             }
