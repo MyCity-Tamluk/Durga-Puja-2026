@@ -13,12 +13,20 @@
     <style>
         :root {
             --bg-color: #2b0707;
-            --panel-bg: rgba(35, 8, 8, 0.95);
+            --panel-bg: rgba(35, 8, 8, 0.96);
             --text-color: #ffffff;
-            --header-bg: rgba(45, 5, 5, 0.92);
+            --header-bg: rgba(45, 5, 5, 0.95);
             --puja-gold: #ffcc00;
             --puja-red: #d90429;
             --puja-orange: #ff6b35;
+        }
+
+        body.dhunuchi-glow-mode {
+            --bg-color: #400303;
+            --panel-bg: rgba(55, 4, 4, 0.98);
+            --puja-gold: #ffe600;
+            --puja-orange: #ff4500;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.5));
         }
 
         body {
@@ -31,6 +39,7 @@
             background: linear-gradient(135deg, #3d0808 0%, #1a0202 50%, #0d0101 100%);
             color: var(--text-color);
             box-sizing: border-box;
+            transition: background 0.5s ease;
         }
 
         #photo-page {
@@ -42,25 +51,27 @@
             width: 100%;
             position: relative;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 12px;
         }
 
+        /* Full Screen Layout Enhancement */
         .home-video-bg-wrapper {
             position: relative;
             width: 100%;
-            border-radius: 20px;
+            flex: 1;
+            border-radius: 16px;
             overflow: hidden;
-            border: 3px solid rgba(255, 204, 0, 0.6);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
-            margin-top: 15px;
-            background: rgba(20, 2, 2, 0.88);
+            border: 2px solid rgba(255, 204, 0, 0.6);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.85);
+            margin-top: 12px;
+            background: rgba(20, 2, 2, 0.9);
             box-sizing: border-box;
             animation: panelGlow 4s infinite alternate;
         }
 
         @keyframes panelGlow {
-            0% { border-color: rgba(255, 204, 0, 0.5); box-shadow: 0 15px 35px rgba(217, 4, 41, 0.4); }
-            100% { border-color: rgba(255, 107, 53, 0.9); box-shadow: 0 20px 55px rgba(255, 204, 0, 0.7); }
+            0% { border-color: rgba(255, 204, 0, 0.5); box-shadow: 0 10px 30px rgba(217, 4, 41, 0.4); }
+            100% { border-color: rgba(255, 107, 53, 0.9); box-shadow: 0 15px 45px rgba(255, 204, 0, 0.7); }
         }
 
         .home-bg-video {
@@ -70,7 +81,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.32;
+            opacity: 0.35;
             z-index: 1;
             pointer-events: none;
         }
@@ -78,32 +89,116 @@
         .home-inner-content {
             position: relative;
             z-index: 2;
-            padding: 20px;
+            padding: 24px 30px;
             box-sizing: border-box;
-            max-height: 76vh;
+            height: 100%;
             overflow-y: auto;
             scroll-behavior: smooth;
             width: 100%;
         }
 
+        /* Top Header Panel & Navigation Layout Improvements */
         .top-header-panel {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 1550px;
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            flex-direction: column;
+            gap: 12px;
             background: var(--header-bg);
             backdrop-filter: blur(18px);
-            padding: 12px 18px;
-            border-radius: 16px;
+            padding: 16px 20px;
+            border-radius: 14px;
             border: 2px solid rgba(255, 204, 0, 0.7);
-            margin-top: 8px;
+            margin-top: 4px;
             box-sizing: border-box;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+        }
+
+        .header-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .header-controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 204, 0, 0.25);
+        }
+
+        /* Running Announcement / Marquee Banner Style */
+        .header-announcement-ticker {
+            flex: 1;
+            min-width: 200px;
+            overflow: hidden;
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            border-radius: 8px;
+            padding: 6px 12px;
+            box-sizing: border-box;
+        }
+
+        .header-announcement-ticker marquee {
+            color: var(--puja-gold);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .sound-jukebox-combo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 6px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+        }
+
+        .sound-jukebox-combo select {
+            background: #200;
+            color: var(--puja-gold);
+            border: 1px solid rgba(255, 204, 0, 0.5);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .music-play-btn {
+            background: var(--puja-red);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .music-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .sound-jukebox-combo input[type="range"] {
+            width: 70px;
+            accent-color: var(--puja-gold);
+            cursor: pointer;
         }
 
         .hover-glow-item {
@@ -111,8 +206,8 @@
             cursor: pointer;
         }
         .hover-glow-item:hover {
-            transform: translateY(-3px) scale(1.05);
-            filter: drop-shadow(0 0 12px rgba(255, 204, 0, 0.9));
+            transform: translateY(-2px) scale(1.03);
+            filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.8));
         }
 
         .icon-btn {
@@ -135,6 +230,7 @@
             gap: 8px;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
         }
         .nav-tab-btn {
             background: linear-gradient(135deg, rgba(30, 2, 2, 0.85), rgba(70, 10, 10, 0.9));
@@ -151,7 +247,7 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            min-height: 42px;
+            min-height: 38px;
             box-sizing: border-box;
         }
         .nav-tab-btn:hover {
@@ -190,11 +286,6 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            animation: pulseGlowBtn 3s infinite alternate;
-        }
-        @keyframes pulseGlowBtn {
-            0% { box-shadow: 0 0 5px rgba(255,204,0,0.3); }
-            100% { box-shadow: 0 0 15px rgba(255,107,53,0.7); border-color: var(--puja-orange); }
         }
         .hub-tab-btn:hover {
             transform: translateY(-3px) scale(1.06);
@@ -223,7 +314,6 @@
             font-weight: 800;
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            animation: pulseGlowBtn 3s infinite alternate;
         }
         .filter-btn:hover {
             background: linear-gradient(135deg, #ff6b35, #d90429);
@@ -243,7 +333,7 @@
 
         .language-selector-box {
             background: rgba(255, 255, 255, 0.12);
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 10px;
             border: 1px solid rgba(255, 204, 0, 0.4);
             display: flex;
@@ -254,35 +344,35 @@
             background: transparent;
             color: white;
             border: none;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
             outline: none;
             cursor: pointer;
         }
         .language-selector-box select option { background: #300; color: white; }
 
+        /* Full Screen App View Panel */
         .app-view-panel {
             display: none;
             flex-direction: column;
             width: 100%;
-            max-width: 1250px;
-            max-height: 78vh;
-            overflow-y: auto;
+            flex: 1;
             background: var(--panel-bg);
             backdrop-filter: blur(20px);
-            padding: 24px;
-            border-radius: 20px;
-            border: 3px solid var(--puja-orange);
+            padding: 24px 30px;
+            border-radius: 16px;
+            border: 2px solid var(--puja-orange);
             z-index: 3;
             color: var(--text-color);
             box-sizing: border-box;
-            margin-top: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+            margin-top: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.85);
             animation: fadeInScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow-y: auto;
         }
 
         @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+            0% { opacity: 0; transform: scale(0.98) translateY(10px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         
@@ -305,57 +395,88 @@
             letter-spacing: 0.5px;
         }
 
+        /* Full Width / Expanded Countdown Container */
         .countdown-container {
             display: flex;
-            gap: 14px;
+            gap: 16px;
             justify-content: center;
             align-items: center;
-            margin: 16px 0;
+            margin: 20px auto;
             flex-wrap: wrap;
+            width: 100%;
+            max-width: 900px;
         }
         .countdown-card {
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             border: 2px solid var(--puja-gold);
-            border-radius: 16px;
-            padding: 10px 18px;
-            min-width: 70px;
+            border-radius: 18px;
+            padding: 16px 26px;
+            min-width: 110px;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.45);
+            box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
+            flex: 1;
         }
         .countdown-num {
-            font-size: 28px;
+            font-size: 38px;
             font-weight: 900;
             color: var(--puja-gold);
             display: block;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+            text-shadow: 0 0 12px rgba(255, 204, 0, 0.9);
         }
         .countdown-label {
-            font-size: 11px;
+            font-size: 12px;
             text-transform: uppercase;
             color: #ffffff;
-            letter-spacing: 1.5px;
-            font-weight: 700;
+            letter-spacing: 2px;
+            font-weight: 800;
         }
 
+        /* Full Width / Expanded Weather Card */
         .weather-card {
-            background: linear-gradient(135deg, rgba(217, 4, 41, 0.4), rgba(255, 107, 53, 0.3));
+            background: linear-gradient(135deg, rgba(217, 4, 41, 0.45), rgba(255, 107, 53, 0.35));
             border: 2px solid var(--puja-gold);
-            border-radius: 16px;
-            padding: 14px 22px;
-            margin: 0 auto 20px auto;
+            border-radius: 18px;
+            padding: 18px 26px;
+            margin: 0 auto 24px auto;
             display: flex;
             align-items: center;
             justify-content: space-around;
             width: 100%;
-            max-width: 720px;
+            max-width: 1000px;
             box-sizing: border-box;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         .weather-item { text-align: center; }
-        .weather-item span { font-size: 12px; color: #ffeb3b; display: block; margin-bottom: 3px; font-weight: 700; }
-        .weather-item strong { font-size: 15px; color: #ffffff; font-weight: 800; }
+        .weather-item span { font-size: 13px; color: #ffeb3b; display: block; margin-bottom: 4px; font-weight: 700; }
+        .weather-item strong { font-size: 16px; color: #ffffff; font-weight: 800; }
+
+        .memory-game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .memory-card {
+            background: linear-gradient(135deg, #d90429, #ff6b35);
+            border: 2px solid var(--puja-gold);
+            border-radius: 12px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .memory-card.flipped, .memory-card.matched {
+            background: rgba(0,0,0,0.7);
+            border-color: #10b981;
+        }
 
         .monument-grid, .tribute-grid, .metro-grid, .sos-grid, .bhog-grid, .food-grid, .route-grid, .traffic-grid {
             display: grid;
@@ -377,17 +498,11 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             padding: 16px;
             box-sizing: border-box;
-            animation: cardFloatGlow 4s infinite alternate;
-        }
-        @keyframes cardFloatGlow {
-            0% { border-color: rgba(255, 204, 0, 0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.6); }
-            100% { border-color: var(--puja-orange); box-shadow: 0 12px 35px rgba(255, 107, 53, 0.5); }
         }
         .monument-card:hover {
             transform: translateY(-8px) scale(1.03);
             border-color: var(--puja-gold);
             box-shadow: 0 15px 40px rgba(255, 204, 0, 0.7);
-            background: linear-gradient(135deg, rgba(70, 10, 10, 0.95), rgba(30, 2, 2, 0.98));
         }
 
         .monument-img-container {
@@ -405,7 +520,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
             transition: transform 0.5s ease;
         }
         .monument-card:hover .monument-img-container img {
@@ -458,15 +572,8 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
-            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             padding: 16px;
             box-sizing: border-box;
-        }
-        .tribute-card:hover, .info-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            border-color: var(--puja-gold);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.7);
-            background: rgba(255, 255, 255, 0.13);
         }
 
         .interactive-transit-card, .interactive-restaurant-card {
@@ -480,11 +587,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-        .interactive-transit-card:hover, .interactive-restaurant-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            background: rgba(217, 4, 41, 0.25);
-            box-shadow: 0 10px 30px rgba(255,204,0,0.4);
         }
 
         .menu-table {
@@ -516,8 +618,8 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            margin-top: auto;
-            margin-bottom: 35px;
+            margin-top: 15px;
+            margin-bottom: 10px;
         }
         .creator-credit {
             color: #ffffff;
@@ -537,21 +639,55 @@
             text-align: center;
             width: 100%;
             margin: 12px 0;
-            animation: floatHero 3s ease-in-out infinite;
         }
 
-        @keyframes floatHero {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
+        /* Enhanced 3D Glowing & Larger Text Effect */
         .typing-text {
-            font-size: clamp(24px, 4.5vw, 38px); 
+            font-size: clamp(34px, 6.5vw, 56px); 
             font-weight: 900;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 12px rgba(0,0,0,0.95);
-            color: var(--puja-gold);
+            letter-spacing: 2px;
             text-align: center;
+            
+            /* Festival Gradient Color */
+            background: linear-gradient(135deg, #fff200 0%, #ffcc00 40%, #ff4500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* 3D Shadow & Glow */
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.9));
+            text-shadow: 
+                0 2px 0 #800000,
+                0 4px 0 #590000,
+                0 6px 15px rgba(255, 107, 53, 0.8),
+                0 0 30px rgba(255, 204, 0, 0.6);
+                
+            animation: textAnimateGlow 3s ease-in-out infinite alternate, floatText 4s ease-in-out infinite;
+            transition: transform 0.3s ease;
+            cursor: default;
+            margin-bottom: 10px;
+        }
+
+        .typing-text:hover {
+            transform: scale(1.05) translateY(-3px);
+            filter: drop-shadow(0 6px 12px rgba(255, 204, 0, 0.9));
+        }
+
+        @keyframes textAnimateGlow {
+            0% {
+                filter: brightness(0.95) drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+            }
+            100% {
+                filter: brightness(1.25) drop-shadow(0 0 25px rgba(255, 204, 0, 0.9));
+            }
+        }
+
+        @keyframes floatText {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .live-date {
@@ -572,33 +708,33 @@
         }
 
         .scrollable-lists {
-            margin-top: 12px;
+            margin-top: 16px;
             width: 100%;
-            padding: 0 8px;
+            padding: 0 12px;
             box-sizing: border-box;
         }
 
+        /* Expanded Full Width Schedule Box */
         .schedule-box-card {
-            background: linear-gradient(135deg, rgba(61, 8, 8, 0.9), rgba(20, 2, 2, 0.95));
+            background: linear-gradient(135deg, rgba(61, 8, 8, 0.92), rgba(20, 2, 2, 0.96));
             backdrop-filter: blur(16px);
-            padding: 22px; 
-            border-radius: 18px;
-            border: 2px solid rgba(255, 204, 0, 0.6);
-            margin: 0 auto 20px auto;
-            max-width: 850px;
+            padding: 26px; 
+            border-radius: 20px;
+            border: 2px solid rgba(255, 204, 0, 0.7);
+            margin: 0 auto 24px auto;
+            max-width: 1100px;
             text-align: center;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.85);
             box-sizing: border-box;
             width: 100%;
         }
         .schedule-box-card h3 {
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
             border-bottom: 2px solid var(--puja-gold);
-            padding-bottom: 10px;
-            font-size: 22px; 
+            padding-bottom: 12px;
+            font-size: 24px; 
             color: var(--puja-gold); 
             text-align: center;
-            text-shadow: 1px 1px 4px #000;
         }
         .schedule-list-ul {
             list-style: none;
@@ -606,21 +742,21 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
             width: 100%;
             box-sizing: border-box;
         }
         .schedule-item-card {
-            background: rgba(0, 0, 0, 0.75);
-            border: 1px solid rgba(255, 204, 0, 0.4);
-            border-radius: 14px;
-            padding: 16px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 204, 0, 0.45);
+            border-radius: 16px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            gap: 8px;
+            gap: 10px;
             box-sizing: border-box;
             width: 100%;
             transition: 0.3s;
@@ -628,18 +764,18 @@
         }
         .schedule-item-card:hover {
             border-color: var(--puja-gold);
-            background: rgba(217, 4, 41, 0.35);
-            transform: scale(1.015);
+            background: rgba(217, 4, 41, 0.38);
+            transform: scale(1.018);
         }
         .schedule-title-line {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .schedule-name-text {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
         }
         .schedule-meta-line {
@@ -647,20 +783,20 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px;
-            font-size: 14px;
+            gap: 6px;
+            font-size: 15px;
             color: #ffdca8;
         }
         .schedule-date-badge {
             color: var(--puja-gold);
             font-weight: 700;
-            font-size: 15px;
+            font-size: 16px;
         }
         .remaining-pill {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 14px;
-            font-size: 11px;
+            padding: 5px 14px;
+            border-radius: 16px;
+            font-size: 12px;
             font-weight: 800;
         }
         .pill-upcoming {
@@ -672,7 +808,6 @@
             background: #10b981;
             color: #ffffff;
             box-shadow: 0 0 12px #10b981;
-            animation: pulse 1.5s infinite;
         }
         .pill-completed {
             background: rgba(255, 255, 255, 0.1);
@@ -683,28 +818,27 @@
         .family-section-box {
             background: linear-gradient(135deg, rgba(61, 8, 8, 0.9), rgba(20, 2, 2, 0.95));
             backdrop-filter: blur(16px);
-            padding: 22px;
-            border-radius: 18px;
-            border: 2px solid rgba(255, 204, 0, 0.5);
-            margin: 0 auto 20px auto;
-            max-width: 850px;
+            padding: 24px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 204, 0, 0.6);
+            margin: 0 auto 24px auto;
+            max-width: 1100px;
             text-align: center;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.85);
             box-sizing: border-box;
             width: 100%;
         }
         .family-section-box h3 {
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
             border-bottom: 2px solid var(--puja-gold);
-            padding-bottom: 10px;
-            font-size: 22px;
+            padding-bottom: 12px;
+            font-size: 24px;
             color: var(--puja-gold);
-            text-shadow: 1px 1px 4px #000;
         }
         .family-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
             text-align: center;
             width: 100%;
             box-sizing: border-box;
@@ -713,7 +847,7 @@
             background: rgba(0, 0, 0, 0.65);
             border: 1px solid rgba(255, 204, 0, 0.4);
             border-radius: 14px;
-            padding: 16px 12px;
+            padding: 18px 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -723,8 +857,8 @@
         }
         .deity-card:hover { transform: translateY(-4px); border-color: var(--puja-gold); background: rgba(217,4,41,0.25); }
         .deity-avatar-box {
-            width: 75px;
-            height: 75px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(135deg, #d90429, #ff6b35);
             border: 2px solid var(--puja-gold);
@@ -732,8 +866,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            margin-bottom: 8px;
-            box-shadow: 0 0 15px rgba(255,204,0,0.6);
+            margin-bottom: 10px;
         }
         .deity-avatar-box img {
             width: 100%;
@@ -743,94 +876,102 @@
         .deity-card h4 {
             margin: 4px 0 2px 0;
             color: var(--puja-gold);
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 800;
         }
         .deity-card span.deity-tag {
-            font-size: 11px;
+            font-size: 12px;
             color: #ffdca8;
             font-weight: 600;
             display: block;
             margin-bottom: 6px;
         }
         .deity-card p {
-            font-size: 12px;
+            font-size: 13px;
             color: #f1dfdf;
             margin: 0;
             line-height: 1.4;
         }
 
+        /* Centered & Enhanced Live News Section Style */
         .news-section-box {
             background: linear-gradient(135deg, rgba(61, 8, 8, 0.9), rgba(20, 2, 2, 0.95));
             backdrop-filter: blur(16px);
-            padding: 22px;
-            border-radius: 18px;
-            border: 2px solid rgba(255, 204, 0, 0.5);
-            margin: 0 auto 20px auto;
-            max-width: 850px;
+            padding: 24px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 204, 0, 0.6);
+            margin: 0 auto 24px auto;
+            max-width: 1100px;
             text-align: center;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.85);
             box-sizing: border-box;
             width: 100%;
         }
         .news-section-box h3 {
-            margin: 0 0 16px 0;
+            margin: 0 0 20px 0;
             border-bottom: 2px solid var(--puja-gold);
-            padding-bottom: 10px;
-            font-size: 22px;
+            padding-bottom: 12px;
+            font-size: 24px;
             color: var(--puja-gold);
-            text-shadow: 1px 1px 4px #000;
         }
         .live-news-cards-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
             width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
             box-sizing: border-box;
         }
         .news-card-item {
-            background: rgba(0, 0, 0, 0.65);
-            border: 1px solid rgba(255, 204, 0, 0.4);
-            border-radius: 12px;
-            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(255, 204, 0, 0.5);
+            border-radius: 14px;
+            padding: 16px 22px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            text-align: left;
+            gap: 8px;
+            text-align: center;
             text-decoration: none;
             color: white;
             box-sizing: border-box;
             width: 100%;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .news-card-item:hover { background: rgba(217, 4, 41, 0.3); border-color: var(--puja-gold); transform: translateX(4px); }
+        .news-card-item:hover { 
+            background: rgba(217, 4, 41, 0.38); 
+            border-color: var(--puja-gold); 
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(255,204,0,0.4);
+        }
         .news-header-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 11px;
-            flex-wrap: wrap;
+            font-size: 12px;
+            width: 100%;
         }
         .live-pulse-badge {
             background: #d90429;
             color: white;
             font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 10px;
+            padding: 4px 10px;
+            border-radius: 12px;
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 10px;
-            animation: pulse 1.5s infinite;
+            font-size: 11px;
+            box-shadow: 0 0 10px #d90429;
         }
         .news-title-text {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
             color: #ffffff;
-            line-height: 1.4;
+            margin: 4px 0;
         }
         .news-time-text {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--puja-gold);
             font-weight: 600;
         }
@@ -1028,45 +1169,60 @@
 
     <div id="photo-page">
         <div class="top-header-panel">
+            <!-- Row 1: Nav Menu Buttons -->
             <div class="nav-menu-box">
                 <button class="nav-tab-btn active" id="btn-home" onclick="switchTab('home')">🏠 Home</button>
                 <button class="nav-tab-btn" id="btn-monuments" onclick="switchTab('monuments')">🏛️ Pandals</button>
                 <button class="nav-tab-btn" id="btn-transit-hub" onclick="switchTab('transit-hub')">🚦 Transit Hub</button>
                 <button class="nav-tab-btn" id="btn-food" onclick="switchTab('food')">🍲 Food Guide</button>
+                <button class="nav-tab-btn" id="btn-soundboard" onclick="switchTab('soundboard')">🎶 Soundboard</button>
+                <button class="nav-tab-btn" id="btn-recipes" onclick="switchTab('recipes')">📜 Recipes</button>
+                <button class="nav-tab-btn" id="btn-diary" onclick="switchTab('diary')">📖 Diary</button>
+                <button class="nav-tab-btn" id="btn-memory-game" onclick="switchTab('memory-game')">🎮 Memory Game</button>
                 <button class="nav-tab-btn" id="btn-carnival" onclick="switchTab('carnival')">🎪 Carnival</button>
                 <button class="nav-tab-btn" id="btn-sos" onclick="switchTab('sos')">🚨 Emergency SOS</button>
                 <button class="nav-tab-btn" id="btn-bhog" onclick="switchTab('bhog')">🍛 Bhog Timings</button>
                 <button class="nav-tab-btn" id="btn-greeting-booth" onclick="switchTab('greeting-booth')">💌 Greeting & Booth</button>
                 <button class="nav-tab-btn" id="btn-tribute" onclick="switchTab('tribute')">🌺 Pushpanjali</button>
                 <button class="nav-tab-btn" id="btn-random-quiz" onclick="switchTab('random-quiz')">⚡ Quiz</button>
+                <button class="nav-tab-btn" id="btn-voting" onclick="switchTab('voting')">🗳️ Poll</button>
                 <button class="nav-tab-btn" id="btn-about" onclick="switchTab('about')">ℹ️ About</button>
             </div>
-            
-            <div class="sound-jukebox-combo hover-glow-item" title="Puja Sound & Jukebox Player">
-                <span>🎵</span>
-                <select id="jukeboxSelect" onchange="changeJukeboxSong()">
-                    <option value="Dugga Elo.mp3">Dugga Elo</option>
-                    <option value="Agomoni Gaan 2026.mp3">Agomoni Gaan 2026</option>
-                </select>
-                <button class="music-play-btn" id="music-toggle-btn" onclick="togglePlayMusic()">⏸️</button>
-                <span style="font-size: 12px; margin-left: 3px;">🔉</span>
-                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.3" oninput="changeVolume()" title="Volume">
-            </div>
 
-            <div class="nav-menu-box" style="display: inline-flex;">
-                <button class="nav-tab-btn" id="btn-shared-media" onclick="switchTab('shared-media')" style="background: linear-gradient(135deg, #ff6b35, #d90429); color: white;">📸 Gallery & Upload</button>
-            </div>
+            <!-- Row 2: Controls, Music, Marquee Ticker, Gallery, Theme & Language Settings -->
+            <div class="header-controls-row">
+                <div class="sound-jukebox-combo hover-glow-item" title="Puja Sound & Jukebox Player">
+                    <span>🎵</span>
+                    <select id="jukeboxSelect" onchange="changeJukeboxSong()">
+                        <option value="Dugga Elo.mp3">Dugga Elo</option>
+                        <option value="Agomoni Gaan 2026.mp3">Agomoni Gaan 2026</option>
+                    </select>
+                    <button class="music-play-btn" id="music-toggle-btn" onclick="togglePlayMusic()">⏸️</button>
+                    <span style="font-size: 12px; margin-left: 3px;">🔉</span>
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.3" oninput="changeVolume()" title="Volume">
+                </div>
 
-            <div class="language-selector-box hover-glow-item">
-                <span>🌐</span>
-                <select id="languageSelect" onchange="changeLanguage()">
-                    <option value="en" selected>English</option>
-                    <option value="bn">বাংলা (Bengali)</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                </select>
-            </div>
+                <!-- Running Announcement Ticker -->
+                <div class="header-announcement-ticker">
+                    <marquee scrollamount="5">✨ Subho Sharadiya! Welcome to Durga Puja 2026 Smart Portal — Explore Live Pandal Darshan, Hopping Routes, Food Guides & Virtual Pushpanjali! 🪔 🙏</marquee>
+                </div>
 
-            <button class="icon-btn hover-glow-item" id="btn-feedback" onclick="showModal('feedback-modal')" title="Submit Feedback">💬</button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button class="nav-tab-btn" id="btn-shared-media" onclick="switchTab('shared-media')" style="background: linear-gradient(135deg, #ff6b35, #d90429); color: white;">📸 Gallery & Upload</button>
+                    <button class="nav-tab-btn hover-glow-item" onclick="toggleDhunuchiGlowMode()" title="Toggle Dhunuchi Amber Glow Theme" style="background: linear-gradient(135deg, #f59e0b, #d90429); color: white;">🔥 Glow FX</button>
+                    
+                    <div class="language-selector-box hover-glow-item">
+                        <span>🌐</span>
+                        <select id="languageSelect" onchange="changeLanguage()">
+                            <option value="en" selected>English</option>
+                            <option value="bn">বাংলা (Bengali)</option>
+                            <option value="hi">हिन्दी (Hindi)</option>
+                        </select>
+                    </div>
+
+                    <button class="icon-btn hover-glow-item" id="btn-feedback" onclick="showModal('feedback-modal')" title="Submit Feedback">💬</button>
+                </div>
+            </div>
         </div>
 
         <div class="home-video-bg-wrapper app-view-panel" id="home-content-view" style="display: flex;">
@@ -1100,7 +1256,7 @@
                     </div>
                 </div>
 
-                <div class="weather-card">
+                <div class="weather-card" id="weatherCardContainer">
                     <div class="weather-item">
                         <span>📍 Location</span>
                         <strong>Kolkata & Bengal</strong>
@@ -1110,8 +1266,8 @@
                         <strong>29°C | Pleasant Autumn</strong>
                     </div>
                     <div class="weather-item">
-                        <span>🌧️ Rain Probability</span>
-                        <strong>15% (Clear Pandal Hopping)</strong>
+                        <span>☂️ Umbrella Alert</span>
+                        <strong id="umbrellaAlertText" style="color: #34d399;">Clear Pandal Hopping</strong>
                     </div>
                 </div>
 
@@ -1126,7 +1282,7 @@
                         <div class="family-cards-grid">
                             <div class="deity-card">
                                 <div class="deity-avatar-box">
-                                    <img src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=200&q=80" alt="Goddess Lakshmi">
+                                    <img src="https://images.unsplash.com/photo-1609137144881-540b5924666a?auto=format&fit=crop&w=300&q=80" alt="Goddess Lakshmi">
                                 </div>
                                 <h4>Goddess Lakshmi</h4>
                                 <span class="deity-tag">Giver of Wealth & Light</span>
@@ -1134,7 +1290,7 @@
                             </div>
                             <div class="deity-card">
                                 <div class="deity-avatar-box">
-                                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80" alt="Goddess Saraswati">
+                                    <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=300&q=80" alt="Goddess Saraswati">
                                 </div>
                                 <h4>Goddess Saraswati</h4>
                                 <span class="deity-tag">Wisdom & Music</span>
@@ -1142,7 +1298,7 @@
                             </div>
                             <div class="deity-card">
                                 <div class="deity-avatar-box">
-                                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=200&q=80" alt="Lord Ganesha">
+                                    <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=300&q=80" alt="Lord Ganesha">
                                 </div>
                                 <h4>Lord Ganesha</h4>
                                 <span class="deity-tag">Remover of Obstacles</span>
@@ -1150,7 +1306,7 @@
                             </div>
                             <div class="deity-card">
                                 <div class="deity-avatar-box">
-                                    <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=200&q=80" alt="Lord Kartikeya">
+                                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80" alt="Lord Kartikeya">
                                 </div>
                                 <h4>Lord Kartikeya</h4>
                                 <span class="deity-tag">Supreme Commander</span>
@@ -1158,7 +1314,7 @@
                             </div>
                             <div class="deity-card">
                                 <div class="deity-avatar-box">
-                                    <img src="https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=200&q=80" alt="The Divine Lion">
+                                    <img src="https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=300&q=80" alt="The Divine Lion">
                                 </div>
                                 <h4>The Divine Lion</h4>
                                 <span class="deity-tag">Devi's Mount (Vahana)</span>
@@ -1166,7 +1322,7 @@
                             </div>
                             <div class="deity-card">
                                 <div class="deity-avatar-box">
-                                    <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=200&q=80" alt="Mahishasura">
+                                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=80" alt="Mahishasura">
                                 </div>
                                 <h4>Mahishasura</h4>
                                 <span class="deity-tag">Subdued Darkness</span>
@@ -1189,9 +1345,82 @@
                 <h2 id="sacred-day-page-title">📺 Sacred Day Live Stream</h2>
                 <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
             </div>
-            <div id="sacred-day-content-box" style="font-size: 15px; line-height: 1.8; color: #fcebeb; text-align: center;">
-                <!-- Dynamic Content injected via JS -->
+            <div id="sacred-day-content-box" style="font-size: 15px; line-height: 1.8; color: #fcebeb; text-align: center;"></div>
+        </div>
+
+        <!-- Memory Game Page View -->
+        <div class="app-view-panel" id="memory-game-page-view">
+            <div class="page-header-row">
+                <h2>🎮 Puja Trivia / Mini Memory Card Game</h2>
+                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
             </div>
+            <p style="color: #ffdca8; text-align: center; margin-bottom: 20px; font-size: 14px;">Match the auspicious puja symbols in pairs to win the game!</p>
+            <div class="memory-game-grid" id="memoryGameGrid"></div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="action-chip-btn" onclick="initMemoryGame()" style="background: var(--puja-red); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">🔄 Restart Game</button>
+            </div>
+        </div>
+
+        <!-- Soundboard Page View -->
+        <div class="app-view-panel" id="soundboard-page-view">
+            <div class="page-header-row">
+                <h2>🎶 Interactive Puja Soundboard (ঢাক, শঙ্খ ও উলুধ্বনি)</h2>
+                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
+            </div>
+            <p style="color: #ffdca8; margin-bottom: 20px; font-size: 14px;">Click the buttons below to trigger authentic festive sounds and create a live pandal ambience:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px;">
+                <div class="info-card" style="text-align: center; cursor: pointer;" onclick="playSoundEffect('dhak')">
+                    <div style="font-size: 40px;">🥁</div>
+                    <h3 style="color: var(--puja-gold); margin: 8px 0;">Dhak Beats</h3>
+                    <p style="font-size: 12px; color: #fcebeb;">Play traditional rhythm</p>
+                </div>
+                <div class="info-card" style="text-align: center; cursor: pointer;" onclick="playSoundEffect('shankh')">
+                    <div style="font-size: 40px;">🐚</div>
+                    <h3 style="color: var(--puja-gold); margin: 8px 0;">Conch (Shankh)</h3>
+                    <p style="font-size: 12px; color: #fcebeb;">Auspicious shell call</p>
+                </div>
+                <div class="info-card" style="text-align: center; cursor: pointer;" onclick="playSoundEffect('ulu')">
+                    <div style="font-size: 40px;">🪔</div>
+                    <h3 style="color: var(--puja-gold); margin: 8px 0;">Ulu Sound</h3>
+                    <p style="font-size: 12px; color: #fcebeb;">Traditional ululation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maha Bhog Recipes Page View -->
+        <div class="app-view-panel" id="recipes-page-view">
+            <div class="page-header-row">
+                <h2>📜 Maha Bhog & Traditional Recipe Corner</h2>
+                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="info-card">
+                    <h3 style="color: var(--puja-gold); margin-top: 0;">🍲 Ashtami Bhoger Khichuri & Labra</h3>
+                    <p><b>Key Ingredients:</b> Gobindobhog Rice, Moong Dal, Potato, Pumpkin, Cauliflower, Ghee, Ginger paste, Cumin & Whole Garam Masala.</p>
+                    <p><b>Method:</b> Dry roast moong dal till golden. Wash Gobindobhog rice. Sauté chopped vegetables in ghee with spices. Boil dal and rice together with vegetables until soft and aromatic. Temper with ghee, bay leaves, and dried red chillies.</p>
+                </div>
+                <div class="info-card">
+                    <h3 style="color: var(--puja-gold); margin-top: 0;">🍮 Traditional Narkel Naru (Coconut Sweet Balls)</h3>
+                    <p><b>Key Ingredients:</b> Fresh grated coconut, Jaggery (Nolen Gur or Date palm jaggery), Cardamom powder.</p>
+                    <p><b>Method:</b> Mix grated coconut and jaggery in a pan on low flame. Stir continuously until the mixture thickens and binds together. Add cardamom powder, let it cool slightly, and shape into round balls with greased palms.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Puja Hopping Diary Page View -->
+        <div class="app-view-panel" id="diary-page-view">
+            <div class="page-header-row">
+                <h2>📖 Personal Puja Memory & Hopping Diary</h2>
+                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
+            </div>
+            <div class="info-card" style="margin-bottom: 20px;">
+                <h3 style="color: var(--puja-gold); margin-top: 0;">✍️ Add New Puja Memory Note</h3>
+                <input type="text" id="diaryTitleInput" placeholder="Note Title (e.g. Sreebhumi Hopping with Family)" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--puja-gold); background: #1f0404; color: white; box-sizing: border-box;">
+                <textarea id="diaryDescInput" rows="3" placeholder="Write down your memorable experience..." style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--puja-gold); background: #1f0404; color: white; box-sizing: border-box;"></textarea>
+                <button class="action-chip-btn" onclick="saveDiaryNote()" style="background: var(--puja-red); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;">Save to Diary 💾</button>
+            </div>
+            <h3 style="color: var(--puja-gold); border-bottom: 1px solid rgba(255,204,0,0.3); padding-bottom: 6px;">📂 Saved Personal Notes</h3>
+            <div id="diaryNotesContainer" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;"></div>
         </div>
 
         <div class="app-view-panel" id="transit-hub-page-view">
@@ -1414,6 +1643,7 @@
                     <button class="filter-btn" onclick="setZoneFilter('Kolkata', this)">Kolkata</button>
                     <button class="filter-btn" onclick="setZoneFilter('South Bengal', this)">South Bengal</button>
                     <button class="filter-btn" onclick="setZoneFilter('North Bengal', this)">North Bengal</button>
+                    <button class="filter-btn" onclick="optimizeWishlistRoute()" style="background: linear-gradient(135deg, #f59e0b, #d90429); color: #fff;" title="AI Route Optimizer">🤖 Smart Route</button>
                     <button class="filter-btn" onclick="showWishlistModal()" style="background: linear-gradient(135deg, #10b981, #047857); color: #fff;">📋 Tour (<span id="wishlist-count-badge">0</span>)</button>
                 </div>
             </div>
@@ -1433,15 +1663,20 @@
             </div>
         </div>
 
+        <!-- Pushpanjali & Floral Offerings Page View -->
         <div class="app-view-panel" id="tribute-page-view">
             <div class="page-header-row">
                 <h2>🌺 Online Pushpanjali & Floral Offerings</h2>
                 <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
             </div>
             
-            <div class="mantra-box" style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 12px; border: 1px solid var(--puja-gold); margin-bottom: 20px; text-align: center; color: var(--puja-gold);">
+            <div class="mantra-box" style="background: rgba(0,0,0,0.6); padding: 18px; border-radius: 14px; border: 2px solid var(--puja-gold); margin-bottom: 20px; text-align: center; color: var(--puja-gold);">
                 <b>॥ Sacred Pushpanjali Mantra ॥</b><br>
-                Om Jayanti Mangala Kali Bhadrakali Kapalini, Durga Shiva Kshama Dhatri Swaha Swadha Namo'stu Te.
+                <span style="font-size: 14px; color: #ffdca8;">Om Jayanti Mangala Kali Bhadrakali Kapalini, Durga Shiva Kshama Dhatri Swaha Swadha Namo'stu Te.</span>
+                <div style="margin-top: 12px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button class="action-chip-btn" onclick="playSoundEffect('shankh')" style="background: #8b5cf6; color: white; border: none; padding: 6px 14px; border-radius: 8px; font-weight: bold; cursor: pointer;">🐚 Play Shankh (Conch)</button>
+                    <button class="action-chip-btn" onclick="playSoundEffect('ulu')" style="background: #f59e0b; color: white; border: none; padding: 6px 14px; border-radius: 8px; font-weight: bold; cursor: pointer;">🪔 Play Ulu Sound</button>
+                </div>
             </div>
 
             <div class="tribute-grid" id="tributeGridContainer"></div>
@@ -1462,6 +1697,16 @@
                 <div id="quizFeedbackMessage" style="margin-top: 15px; font-weight: bold; font-size: 15px; min-height: 24px;"></div>
                 <button class="action-chip-btn" id="nextQuizBtn" onclick="nextQuizQuestion()" style="margin-top: 15px; background: var(--puja-red); color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: bold; cursor: pointer; display: none;">Next Question ➡️</button>
             </div>
+        </div>
+
+        <!-- Voting / Poll Page View -->
+        <div class="app-view-panel" id="voting-page-view">
+            <div class="page-header-row">
+                <h2>🗳️ Community Poll: Best Pandal & Theme of 2026</h2>
+                <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
+            </div>
+            <p style="color: #ffdca8; margin-bottom: 15px; font-size: 14px;">Vote for your favorite pandal/theme and see real-time community results:</p>
+            <div id="voting-cards-container" style="display: flex; flex-direction: column; gap: 14px; max-width: 650px; margin: 0 auto; width: 100%;"></div>
         </div>
 
         <div class="app-view-panel" id="greeting-booth-page-view">
@@ -1521,19 +1766,29 @@
             </div>
         </div>
 
+        <!-- About Us Page View -->
         <div class="app-view-panel" id="about-us-page-view">
             <div class="page-header-row">
                 <h2 id="about-title">About Us - Durga Puja Portal</h2>
                 <button class="nav-tab-btn" onclick="switchTab('home')">Back to Home</button>
             </div>
-            <div class="about-us-content">
-                <p style="color: var(--puja-gold); font-weight: bold; font-size: 20px;">Created by Madan Basuli</p>
-                <p id="about-desc-1">Welcome to the Durga Puja Smart Celebration Portal, created by Madan Basuli. This digital platform brings the joy, devotion, and festive spirit of Sharadotsav to devotees worldwide.</p>
+            <div class="about-us-content" style="font-size: 15px; line-height: 1.8; color: #fcebeb;">
+                <p style="color: var(--puja-gold); font-weight: bold; font-size: 20px;">Created & Developed by Madan Basuli</p>
+                <p id="about-desc-1">Welcome to the Durga Puja Smart Celebration Portal, created by <b>Madan Basuli</b>. This digital platform brings the ultimate joy, devotion, and festive spirit of Sharadotsav to devotees worldwide.</p>
                 
-                <h3 id="about-heading-2">Our Mission</h3>
-                <p id="about-desc-2">To provide an interactive, inclusive, and technologically advanced space to learn about Durga Puja rituals, test knowledge through quizzes, explore district pandals, and streamline festival travels.</p>
+                <h3 style="color: var(--puja-gold); margin-top: 20px;">🌟 Key Features of the Portal</h3>
+                <ul style="padding-left: 20px; line-height: 1.8;">
+                    <li><b>🏛️ District Pandals & Smart Route Planner:</b> Explore heritage and theme pandals across Kolkata and districts, and get AI-optimized hopping itineraries.</li>
+                    <li><b>🌺 Virtual Pushpanjali & Soundboard:</b> Offer floral tributes with confetti flower showers and play authentic Dhak beats, Conch (Shankh) & Ulu sounds.</li>
+                    <li><b>🚦 Transit & Traffic Hub:</b> Real-time updates on Kolkata Metro overnight schedules, local trains, ferry services, and parking no-entry zones.</li>
+                    <li><b>🍲 Food Guide & Maha Bhog Menus:</b> Discover traditional Ashtami khichuri timings and iconic Kolkata street food & restaurant menus.</li>
+                    <li><b>💌 Greeting Cards & Photo Booth:</b> Design personalized festival greeting cards and decorate photos with divine frames and stickers.</li>
+                </ul>
 
-                <p style="margin-top: 22px; font-weight: bold; color: var(--puja-gold);">Platform Architecture & Design: Madan Basuli</p>
+                <h3 style="color: var(--puja-gold); margin-top: 20px;">Our Mission</h3>
+                <p id="about-desc-2">To provide an interactive, inclusive, and technologically advanced digital space to celebrate Durga Puja rituals, test cultural knowledge through quizzes, and streamline festival travels.</p>
+
+                <p style="margin-top: 25px; font-weight: bold; color: var(--puja-gold); text-align: center; border-top: 1px solid rgba(255,204,0,0.3); padding-top: 15px;">Platform Architecture, Design & Programming: Madan Basuli</p>
             </div>
         </div>
 
@@ -1577,6 +1832,14 @@
                 <button class="modal-close-btn" onclick="closeModal()">Close</button>
             </div>
 
+            <!-- Smart Route Modal -->
+            <div id="smart-route-modal" class="modal-box" style="display: none; max-width: 480px;">
+                <h2>🤖 AI Optimized Hopping Route</h2>
+                <p style="font-size: 13px; color: #ffcc00; margin: 6px 0 12px 0;">Sorted sequence based on geographical cluster:</p>
+                <div class="data-display-box" id="smart-route-items-container"></div>
+                <button class="modal-close-btn" onclick="closeModal()">Close</button>
+            </div>
+
             <div id="feedback-modal" class="modal-box" style="display: none;">
                 <h2>Send Festive Wishes</h2>
                 <input type="text" id="feedName" placeholder="Your Name">
@@ -1605,13 +1868,13 @@
                 zone: "Kolkata", 
                 crowd: "high", 
                 desc: "Over a century-old traditional Ekchala idol and iconic Sindoor Khela.", 
-                image: "https://thumbs.dreamstime.com/z/bagbazar-sarbojanin-durga-puja-festival-kolkata-west-bengal-india-goddess-idol-decorated-pandal-shot-colored-light-159799818.jpg", 
+                image: "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Bagbazar+Sarbojanin+Durgotsav+Kolkata",
                 history: "Bagbazar Sarbojanin Durgotsav is one of the oldest and most prestigious Durga Puja festivals in Kolkata, celebrating over a century of heritage.",
                 highlights: ["Traditional Ekchala Idol adorned in Daaker Saaj", "Iconic Sindoor Khela on the banks of the Ganges", "Cultural epicenter hosting national leaders and classical artists"],
                 photos: [
-                    "https://i.pinimg.com/736x/d8/c5/23/d8c5238a8df8cc40949e401fa3c25c6a.jpg",
-                    "https://th.bing.com/th/id/OIP.ddqHdqviMbq1ApRS-9YkZwHaGO?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+                    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1620,13 +1883,13 @@
                 zone: "Kolkata", 
                 crowd: "high", 
                 desc: "Renowned for architectural palace replicas, gold ornaments, and grand illumination.", 
-                image: "https://i.ytimg.com/vi/DtZ4qtCoFiU/maxresdefault.jpg", 
+                image: "https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Sreebhumi+Sporting+Club+Lake+Town+Kolkata",
                 history: "Sreebhumi Sporting Club has gained legendary status across Kolkata for replicating magnificent historical palaces and adorning the Goddess in pure gold jewelry.",
                 highlights: ["Grand architectural replicas of world monuments", "Breathtaking lighting and laser show displays", "Massive footfall and state-of-the-art crowd management"],
                 photos: [
-                    "https://i.ytimg.com/vi/AeR6uPq5Q-w/maxresdefault.jpg",
-                    "https://i.ytimg.com/vi/BWnyx3dfSIs/maxresdefault.jpg"
+                    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1635,13 +1898,13 @@
                 zone: "Kolkata", 
                 crowd: "medium", 
                 desc: "Famous for state-themed pandals showcasing diverse Indian heritage and culture.", 
-                image: "https://www.kolkatadurgotsav.com/wp-content/uploads/2025/08/suruchisangha.jpg", 
+                image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Suruchi+Sangha+New+Alipore+Kolkata",
                 history: "Suruchi Sangha is celebrated for presenting unique cultural themes representing different states of India, highlighting traditional crafts, folk music, and warm hospitality.",
                 highlights: ["Winner of several prestigious Sharad Samman awards", "Vibrant depiction of rural Indian art and lifestyle", "Eco-friendly and socially impactful themes"],
                 photos: [
-                    "https://i.ytimg.com/vi/l7lP-M6Wuns/maxresdefault.jpg",
-                    "https://i.ytimg.com/vi/z-m7z3bFjCQ/maxresdefault.jpg"
+                    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1650,12 +1913,12 @@
                 zone: "South Bengal", 
                 crowd: "medium", 
                 desc: "Historic Tamralipta kingdom heritage puja celebrated with ancient rituals.", 
-                image: "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Tamluk+Rajbari+Durga+Puja+Purba+Medinipur",
                 history: "Tamluk Rajbari and the premises near the sacred 51 Shaktipith Bargabhima Temple host historical Durga Pujas that reflect the ancient maritime and royal heritage of Tamralipta.",
                 highlights: ["Rooted in ancient Shaktipith traditions", "Royal family customs and classical chanting", "Deep historical significance spanning centuries"],
                 photos: [
-                    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1664,12 +1927,12 @@
                 zone: "South Bengal", 
                 crowd: "medium", 
                 desc: "Centuries-old royal palace puja showcasing magnificent aristocratic heritage.", 
-                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1569060611642-14d241c4bc1b?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Mahishadal+Rajbari+Durga+Puja",
                 history: "Organized by the erstwhile Mahishasadal Raj family, this puja maintains centuries-old royal protocols, traditional instrumentation, and grand family devotion.",
                 highlights: ["Authentic Rajbari architectural grandeur", "Traditional uncompromised ritualistic worship", "Historical heirloom artifacts displayed during festival"],
                 photos: [
-                    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1683,7 +1946,7 @@
                 history: "Contai Youth Guild organizes one of the most attractive mega-budget pujas in the coastal sub-division of Purba Medinipur, drawing massive crowds with artistic grandeur.",
                 highlights: ["Creative landmark theme pandals", "Extensive social welfare and cultural programs", "Grand festive illumination across Contai town"],
                 photos: [
-                    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1692,12 +1955,12 @@
                 zone: "South Bengal", 
                 crowd: "high", 
                 desc: "Grand industrial township celebrations with innovative art and cultural galas.", 
-                image: "https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Haldia+Township+Durga+Puja",
                 history: "The industrial hub of Haldia hosts spectacular community pujas across its townships, characterized by modern engineering marvels in pandal making and vibrant cultural fests.",
                 highlights: ["Spacious pandal grounds with modern layouts", "Corporate and public community collaboration", "Stunning light and sound productions"],
                 photos: [
-                    "https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1706,12 +1969,12 @@
                 zone: "South Bengal", 
                 crowd: "medium", 
                 desc: "One of Howrah's oldest and most prestigious heritage pujas with mammoth theme decor.", 
-                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Santragachi+Bayam+Samity+Howrah",
                 history: "Santragachi Bayam Samity is a hallmark celebration in Howrah, uniting traditional physical culture traditions with grand artistic theme exhibitions every autumn.",
                 highlights: ["Exquisite bamboo and cloth craftsmanship", "Warm community involvement spanning generations", "Spectacular evening lighting"],
                 photos: [
-                    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1720,12 +1983,12 @@
                 zone: "South Bengal", 
                 crowd: "medium", 
                 desc: "World-famous Chandannagar artistic light works and traditional zamindar traditions.", 
-                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1570784332176-fdd73da66f03?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Chandannagar+Hooghly+Durga+Puja",
                 history: "Chandannagar is globally acclaimed for its intricate wire-tubing light art that creates moving visual stories across the night sky.",
-                highlights: ["Handcrafted tube-light animation displays", "French-influenced riverside heritage elegance", "Breathtaking synchronization of light and music"],
+                highlights: ["Handcrafted tube-light animation displays", "French-influenced riverside riverside elegance", "Breathtaking synchronization of light and music"],
                 photos: [
-                    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1734,12 +1997,12 @@
                 zone: "South Bengal", 
                 crowd: "high", 
                 desc: "Famous for colossal artistic pandal replicas and magnificent digital illuminations.", 
-                image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Barasat+Pioneer+Club+North+24+Parganas",
                 history: "Barasat is famous for hosting gigantic pandal complexes along Jessore Road, attracting lakhs of visitors with monumental replicas and high-tech soundscapes.",
                 highlights: ["Colossal structures rivaling Kolkata's biggest pujas", "Immersive sound and visual projections", "Vibrant festive carnival atmosphere"],
                 photos: [
-                    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1569060611642-14d241c4bc1b?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1748,12 +2011,12 @@
                 zone: "South Bengal", 
                 crowd: "medium", 
                 desc: "Renowned for deeply emotional contemporary themes and Sabarna Roy Choudhury roots.", 
-                image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Barisha+Club+Durga+Puja+Kolkata",
                 history: "Barisha Club consistently pushes creative boundaries with thought-provoking, socially relevant, and poignant artistic installations addressing human emotions and societal themes.",
                 highlights: ["Acclaimed for conceptual and philosophical art installations", "Deep community connection", "Subtle yet powerful storytelling through sculpture"],
                 photos: [
-                    "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=600&q=80"
+                    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80"
                 ]
             },
             { 
@@ -1762,7 +2025,7 @@
                 zone: "South Bengal", 
                 crowd: "medium", 
                 desc: "Bengal's oldest recorded Durga Puja founded in 997 AD by Malla kings.", 
-                image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1569060611642-14d241c4bc1b?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Maa+Mrinmoyee+Temple+Bishnupur+Bankura",
                 history: "Established in 997 AD by King Jagat Malla, Maa Mrinmoyee Temple is the oldest continuously running Durga Puja in West Bengal, steeped in royal terracotta heritage.",
                 highlights: ["Centuries-old royal Malla dynasty rituals", "Cannon firing ritual to announce Sasthi", "Terracotta temple architecture backdrop"],
@@ -1776,7 +2039,7 @@
                 zone: "South Bengal", 
                 crowd: "high", 
                 desc: "Where modern Durga Puja grandiosity flourished under Raja Krishna Chandra Roy.", 
-                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Krishnanagar+Rajbari+Durga+Puja+Nadia",
                 history: "Initiated by Raja Krishna Chandra Roy in the 18th century, Krishnanagar Rajbari puja is the birthplace of classical clay modeling and traditional royal worship protocols in Bengal.",
                 highlights: ["Exquisite royal clay craftsmanship from Ghurni", "Traditional Rajbari bhog and Dhrupadi arati", "Historic palace courtyards"],
@@ -1790,7 +2053,7 @@
                 zone: "North Bengal", 
                 crowd: "high", 
                 desc: "Over 500-year-old historic royal puja of the Koch kings.", 
-                image: "https://images.unsplash.com/photo-1569060611642-14d241c4bc1b?auto=format&fit=crop&w=600&q=80", 
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80", 
                 mapQuery: "Madan+Mohan+Temple+Bara+Debi+Cooch+Behar",
                 history: "Patronized by the Koch dynasty, the Bara Debi puja features a striking, unique blood-red deity deeply rooted in North Bengal royal history.",
                 highlights: ["Historic Koch royal dynasty traditions", "Unique towering red idol representation", "Centuries-old customs"],
@@ -1944,7 +2207,9 @@
             { name: "Goddess Lakshmi", role: "Giver of Prosperity", desc: "Bestower of peace, fortune, spiritual and material wealth.", flowers: 28, photo: "🪷" },
             { name: "Goddess Saraswati", role: "Goddess of Wisdom", desc: "Deity of learning, speech, music, art, and creative intellect.", flowers: 32, photo: "🦢" },
             { name: "Lord Ganesha", role: "Vighnaharta", desc: "Remover of all obstacles and harbinger of auspicious beginnings.", flowers: 40, photo: "🐘" },
-            { name: "Lord Kartikeya", role: "Divine Commander", desc: "Embodiment of valor, supreme strength, and youthful vigor.", flowers: 25, photo: "🦚" }
+            { name: "Lord Kartikeya", role: "Divine Commander", desc: "Embodiment of valor, supreme strength, and youthful vigor.", flowers: 25, photo: "🦚" },
+            { name: "Mahishasura", role: "Subdued Demon King", desc: "The vanquished demon symbolizing ego, subdued by Mother Durga's divine power.", flowers: 15, photo: "👹" },
+            { name: "The Divine Lion", role: "Devi's Vahana", desc: "The fearless royal mount representing supreme power and courage.", flowers: 22, photo: "🦁" }
         ];
 
         let defaultSharedMedia = [
@@ -1961,19 +2226,32 @@
         let currentZoneFilter = "all";
         let tributeDeities = JSON.parse(localStorage.getItem('portal_deities')) || defaultTributeFighters;
 
+        let communityPollData = JSON.parse(localStorage.getItem('portal_poll_data')) || [
+            { name: "Sreebhumi Sporting Club", votes: 342 },
+            { name: "Bagbazar Sarbojanin", votes: 289 },
+            { name: "Suruchi Sangha", votes: 215 },
+            { name: "Barasat Pioneer Athletic Club", votes: 178 }
+        ];
+
+        let userDiaryNotes = JSON.parse(localStorage.getItem('portal_diary_notes')) || [
+            { title: "First Day Pandal Hopping", desc: "Visited Sreebhumi and Bagbazar with friends. Amazing lighting and crowd energy!" }
+        ];
+
         const sacredPujaDates = [
             {
                 key: "mahalaya",
                 icon: "🔱",
+                stotram: "॥ ওং হ্রীং দুর্গায়ৈ নমঃ ॥ মহিষাসুরমদিনী স্তোত্রম্ — সৃষ্টিস্থিতिवিনাশানাং শক্তিভূতে সনাতনি...",
                 name: { en: "Mahalaya (Invocation of Devi)", bn: "মহালয়া (দেবীপক্ষের সূচনা ও চণ্ডীপাঠ)", hi: "महालया (देवी पक्ष आरंभ)" },
                 desc: { en: "Beginning of Devi Paksha & Birendra Krishna Bhadra Chandi Path", bn: "ভোর ৪টায় বীরেন্দ্রকৃষ্ণ ভদ্রের চণ্ডীপাঠ ও চক্ষুদান", hi: "चंडी पाठ एवं पितृ विसर्जन" },
                 targetYear: 2026, targetMonth: 9, targetDay: 10,
                 dateDisplay: { en: "10 Oct 2026, Saturday", bn: "১০ অক্টোবর ২০২৬, শনিবার", hi: "10 अक्टूबर 2026, शनिवार" },
-                youtubeEmbed: "https://www.youtube.com/"
+                youtubeEmbed: "https://www.youtube.com/watch?v=IPimdCeJCWs&list=RDIPimdCeJCWs&start_radio=1"
             },
             {
                 key: "sasthi",
                 icon: "🌾",
+                stotram: "॥ ষষ্ঠ্যাস্তু বোধনং দেব্যাঃ কল্পারম্ভঃ সমাচরেৎ ॥",
                 name: { en: "Maha Sasthi (Bodhon & Kalparambha)", bn: "মহাষষ্ঠী (দেবীর বোধন ও আমন্ত্রণ)", hi: "महा षष्ठी (देवी का बोधन)" },
                 desc: { en: "Awakening of Maa Durga & public unveiling of all pandals", bn: "দেবী দুর্গার অধিবাস, আমন্ত্রণ ও মণ্ডপ উন্মোচন", hi: "मां दुर्गा का आह्वान एवं पंडाल उद्घाटन" },
                 targetYear: 2026, targetMonth: 9, targetDay: 16,
@@ -1983,40 +2261,114 @@
             {
                 key: "saptami",
                 icon: "🌿",
+                stotram: "॥ নবপত্রিকা প্রবেশঃ স্নানঞ্চ মহাসপ্তম্যাম্ ॥",
                 name: { en: "Maha Saptami (Nabapatrika Snan)", bn: "মহাসপ্তমী (নবপত্রিকা স্নান ও পূজা)", hi: "महा सप्तमी (नवपत्रिका प्रवेश)" },
                 desc: { en: "Kola Bou bathing at riverbanks and full ritual worship starts", bn: "ভোরে গঙ্গার ঘাটে কলাবউ স্নান ও প্রধান পূজা আরম্ভ", hi: "पवित्र स्नान एवं विस्तृत पूजा अनुष्ठान" },
                 targetYear: 2026, targetMonth: 9, targetDay: 17,
                 dateDisplay: { en: "17 Oct 2026, Saturday", bn: "১৭ অক্টোবর ২০২৬, শনিবার", hi: "17 अक्टूबर 2026, शनिवार" },
-                youtubeEmbed: "https://www.youtube.com/embed/jfKfPfyJRdk"
+                youtubeEmbed: "https://www.youtube.com/"
             },
             {
                 key: "ashtami",
                 icon: "🪷",
+                stotram: "॥ সর্বমঙ্গলা মঙ্গল্যে শিবে সর্বার্থসাধিকে শরণ্যে ত্র্যম্বকে গৌরি নারায়ণি নমোহস্তুতে ॥",
                 name: { en: "Maha Ashtami (Kumari Puja & Sandhi Puja)", bn: "মহাঅষ্টমী (কুমারী পূজা ও মহাপ্রার্থনা)", hi: "महा अष्टमी (कुमारी पूजा)" },
                 desc: { en: "Sacred Pushpanjali, Kumari Puja & 108 Lotuses Sandhi Puja", bn: "সকালবেলার মহা অঞ্জলি ও ১০৮ পদ্মের ঐতিহাসিক সন্ধিপূজা", hi: "भव्य पुष्पांजलि एवं 108 दीप संधि पूजा" },
                 targetYear: 2026, targetMonth: 9, targetDay: 19,
                 dateDisplay: { en: "19 Oct 2026, Monday", bn: "১৯ অক্টোবর ২০২৬, সোমবার", hi: "19 अक्टूबर 2026, सोमवार" },
-                youtubeEmbed: "https://www.youtube.com/embed/5qap5aO4i9A"
+                youtubeEmbed: "https://www.youtube.com/"
             },
             {
                 key: "navami",
                 icon: "🪔",
+                stotram: "॥ মহানবম্যাং বলিদানং হোমশ্চ মহাআরতিঃ ॥",
                 name: { en: "Maha Navami (Navami Homa & Arati)", bn: "মহানবমী (নবমী হোম ও ধুনুচি আরতি)", hi: "महा Navमी (हवन एवं महाआरती)" },
                 desc: { en: "Grand Navami Yajna, ecstatic Dhunuchi Dance & Night Carnivals", bn: "মহাযজ্ঞ সম্পাদন ও গভীর রাত পর্যন্ত জমজমাট ধুনুচি নাচ", hi: "महा यज्ञ एवं भव्य सांस्कृतिक उत्सव" },
                 targetYear: 2026, targetMonth: 9, targetDay: 20,
                 dateDisplay: { en: "20 Oct 2026, Tuesday", bn: "২০ অক্টোবর ২০২৬, মঙ্গলবার", hi: "20 अक्टूबर 2026, मंगलवार" },
-                youtubeEmbed: "https://www.youtube.com/embed/jfKfPfyJRdk"
+                youtubeEmbed: "https://www.youtube.com/"
             },
             {
                 key: "dashami",
                 icon: "🌺",
+                stotram: "॥ শুভ বিজয়া! পুনশ্চ দর্শয়ায় চ ॥ দেবী বিসর্জন ও সিঁদুর খেলা ॥",
                 name: { en: "Vijaya Dashami (Sindoor Khela & Visarjan)", bn: "বিজয়া দশমী (সিঁদুর খেলা ও দেবী বিসর্জন)", hi: "विजयादशमी (सिन्दूर खेला व विसर्जन)" },
                 desc: { en: "Auspicious Sindoor Khela, Mother Durga's farewell and Visarjan", bn: "সধবাদের সিঁদুর খেলা, মিষ্টিমুখ ও দেবীর প্রতিমা বিসর্জন", hi: "सिन्दूर खेला, विसर्जन एवं विजया मिलन" },
                 targetYear: 2026, targetMonth: 9, targetDay: 21,
                 dateDisplay: { en: "21 Oct 2026, Wednesday", bn: "২১ অক্টোবর ২০২৬, বুধবার", hi: "21 अक्टूबर 2026, बुधवार" },
-                youtubeEmbed: "https://www.youtube.com/embed/5qap5aO4i9A"
+                youtubeEmbed: "https://www.youtube.com/"
             }
         ];
+
+        function checkLiveWeatherAndUmbrella() {
+            let alertEl = document.getElementById('umbrellaAlertText');
+            if(!alertEl) return;
+            let rainProb = Math.floor(Math.random() * 30);
+            if (rainProb > 20) {
+                alertEl.innerText = "☂️ Light Showers Likely! Carry Umbrella";
+                alertEl.style.color = "#f59e0b";
+            } else {
+                alertEl.innerText = "🟢 Clear Skies - Great for Hopping";
+                alertEl.style.color = "#34d399";
+            }
+        }
+
+        let memoryIcons = ['🔱', '🪔', '🥁', '🌺', '🪷', '🦁'];
+        let memoryCards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+
+        function initMemoryGame() {
+            let grid = document.getElementById('memoryGameGrid');
+            if (!grid) return;
+            grid.innerHTML = "";
+            matchedPairs = 0;
+            flippedCards = [];
+
+            let deck = [...memoryIcons, ...memoryIcons].sort(() => Math.random() - 0.5);
+            memoryCards = deck;
+
+            deck.forEach((icon, idx) => {
+                let card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.index = idx;
+                card.dataset.icon = icon;
+                card.innerText = "❓";
+                card.onclick = () => flipMemoryCard(card, idx, icon);
+                grid.appendChild(card);
+            });
+        }
+
+        function flipMemoryCard(cardCard, idx, icon) {
+            if (cardCard.classList.contains('flipped') || cardCard.classList.contains('matched') || flippedCards.length >= 2) return;
+            
+            cardCard.innerText = icon;
+            cardCard.classList.add('flipped');
+            flippedCards.push({ card: cardCard, icon: icon, index: idx });
+
+            if (flippedCards.length === 2) {
+                setTimeout(checkMemoryMatch, 600);
+            }
+        }
+
+        function checkMemoryMatch() {
+            let [c1, c2] = flippedCards;
+            if (c1.icon === c2.icon) {
+                c1.card.classList.add('matched');
+                c2.card.classList.add('matched');
+                matchedPairs++;
+                if (matchedPairs === memoryIcons.length) {
+                    confetti({ particleCount: 100, spread: 90, origin: { y: 0.6 } });
+                    alert("🎉 Congratulations! You successfully matched all Puja symbols!");
+                }
+            } else {
+                c1.card.innerText = "❓";
+                c2.card.innerText = "❓";
+                c1.card.classList.remove('flipped');
+                c2.card.classList.remove('flipped');
+            }
+            flippedCards = [];
+        }
 
         function renderDynamicSacredSchedule() {
             const ul = document.getElementById('puja-days-ul');
@@ -2056,7 +2408,7 @@
                 li.onclick = () => openSacredDayDetail(item.key);
                 li.innerHTML = `
                     <div class="schedule-title-line">
-                        <span style="font-size: 18px;">${item.icon}</span>
+                        <span style="font-size: 20px;">${item.icon}</span>
                         <span class="schedule-name-text" style="color: ${item.key === 'dashami' ? 'var(--puja-gold)' : '#ffffff'};">
                             ${item.name[lang] || item.name.en}
                         </span>
@@ -2065,7 +2417,7 @@
                     <div class="schedule-meta-line">
                         <span class="schedule-date-badge">📅 ${item.dateDisplay[lang] || item.dateDisplay.en}</span>
                         <span>${item.desc[lang] || item.desc.en}</span>
-                        <span style="color: var(--puja-gold); font-size: 12px; margin-top: 4px; font-weight: bold;">▶️ Click to watch Live YouTube Stream & Details</span>
+                        <span style="color: var(--puja-gold); font-size: 13px; margin-top: 4px; font-weight: bold;">▶️ Click to watch Live YouTube Stream & Details</span>
                     </div>
                 `;
                 ul.appendChild(li);
@@ -2081,17 +2433,155 @@
 
             let contentBox = document.getElementById('sacred-day-content-box');
             contentBox.innerHTML = `
-                <p style="font-size: 16px; color: var(--puja-gold); font-weight: bold;">📅 Date: ${dayData.dateDisplay[lang] || dayData.dateDisplay.en}</p>
-                <p style="font-size: 15px; margin-bottom: 20px;">${dayData.desc[lang] || dayData.desc.en}</p>
-                
-                <h3 style="color: var(--puja-gold); margin-bottom: 10px;">🔴 Live YouTube Telecast & Ritual Stream</h3>
-                <div style="position: relative; width: 100%; max-width: 700px; height: 380px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 2px solid var(--puja-gold); box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
-                    <iframe src="${dayData.youtubeEmbed}" title="Live YouTube Stream" style="width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+                <!-- Live Pulse Badge & Stotram Box Added -->
+                <div style="margin-bottom: 15px;">
+                    <span style="background: #d90429; color: white; padding: 4px 14px; border-radius: 20px; font-weight: 800; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 0 12px #d90429;">
+                        🔴 LIVE BROADCAST READY
+                    </span>
                 </div>
-                <p style="margin-top: 15px; font-size: 13px; color: #ffdca8;">Experience live dhak beats, arati, and sacred mantras directly from prominent puja pandals.</p>
+
+                <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid var(--puja-gold); padding: 12px 20px; border-radius: 12px; max-width: 650px; margin: 0 auto 20px auto; color: var(--puja-gold); font-style: italic; font-weight: 600;">
+                    ${dayData.stotram}
+                </div>
+
+                <p style="font-size: 16px; color: var(--puja-gold); font-weight: bold;">📅 Date: ${dayData.dateDisplay[lang] || dayData.dateDisplay.en}</p>
+                <p style="font-size: 15px; margin-bottom: 25px;">${dayData.desc[lang] || dayData.desc.en}</p>
+                
+                <div style="background: rgba(0, 0, 0, 0.6); border: 2px solid var(--puja-gold); padding: 30px; border-radius: 16px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+                    <div style="font-size: 50px; margin-bottom: 10px;">📺</div>
+                    <h3 style="color: var(--puja-gold); margin-bottom: 10px;">Watch Live Ritual & Chandi Path on YouTube</h3>
+                    <p style="font-size: 14px; color: #fcebeb; margin-bottom: 20px;">Due to YouTube security & playback restrictions, live telecasts open directly on YouTube for the best buffer-free experience.</p>
+                    <a href="${dayData.youtubeEmbed}" target="_blank" rel="noopener noreferrer" style="background: var(--puja-red); color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 4px 15px rgba(217,4,41,0.5);">
+                        ▶️ Open & Watch on YouTube
+                    </a>
+                    <div style="margin-top: 20px;">
+                        <button class="action-chip-btn" onclick="requestBrowserNotification('${dayData.name.en}')" style="background: #059669; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer;">🔔 Set Puja Browser Reminder</button>
+                    </div>
+                </div>
+
+                <!-- Devotional Quick Emoji Reaction Bar -->
+                <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <button onclick="triggerStreamReaction('🙏')" style="background: rgba(255,255,255,0.1); border: 1px solid var(--puja-gold); color: #fff; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer;">🙏 Joy Maa Durga</button>
+                    <button onclick="triggerStreamReaction('🪔')" style="background: rgba(255,255,255,0.1); border: 1px solid var(--puja-gold); color: #fff; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer;">🪔 Pranaam</button>
+                    <button onclick="triggerStreamReaction('🌺')" style="background: rgba(255,255,255,0.1); border: 1px solid var(--puja-gold); color: #fff; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer;">🌺 Pushpanjali</button>
+                </div>
+
+                <p style="margin-top: 25px; font-size: 13px; color: #ffdca8;">Experience live dhak beats, arati, and sacred mantras directly from prominent puja pandals.</p>
             `;
 
             switchTab('sacred-day-detail');
+        }
+
+        function triggerStreamReaction(emoji) {
+            confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 } });
+            alert(`🙏 Thank you for offering ${emoji}! May Maa Durga shower her divine blessings upon you.`);
+        }
+
+        function requestBrowserNotification(eventName) {
+            if (!("Notification" in window)) {
+                alert("Browser notifications are not supported by your browser.");
+                return;
+            }
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    new Notification("Durga Puja Alert 🪔", {
+                        body: `Reminder set successfully for ${eventName}! May Maa Durga bless you.`,
+                        icon: "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=100&q=80"
+                    });
+                    alert("🔔 Browser Notification Reminder Activated successfully!");
+                } else {
+                    alert("Notification permission was denied.");
+                }
+            });
+        }
+
+        function playSoundEffect(type) {
+            let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (type === 'dhak') {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.3);
+                gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } else if (type === 'shankh') {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                osc.frequency.linearRampToValueAtTime(450, audioCtx.currentTime + 0.8);
+                gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.9);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.9);
+            } else if (type === 'ulu') {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.linearRampToValueAtTime(1100, audioCtx.currentTime + 0.2);
+                osc.frequency.linearRampToValueAtTime(700, audioCtx.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.5);
+            }
+            confetti({ particleCount: 20, spread: 40, origin: { y: 0.8 } });
+        }
+
+        function saveDiaryNote() {
+            let title = document.getElementById('diaryTitleInput').value.trim();
+            let desc = document.getElementById('diaryDescInput').value.trim();
+            if (!title || !desc) {
+                alert("Please enter both title and note description!");
+                return;
+            }
+            userDiaryNotes.unshift({ title, desc });
+            localStorage.setItem('portal_diary_notes', JSON.stringify(userDiaryNotes));
+            document.getElementById('diaryTitleInput').value = "";
+            document.getElementById('diaryDescInput').value = "";
+            renderDiaryNotes();
+            alert("📖 Puja diary note saved successfully!");
+        }
+
+        function renderDiaryNotes() {
+            let container = document.getElementById('diaryNotesContainer');
+            if (!container) return;
+            container.innerHTML = "";
+            if (userDiaryNotes.length === 0) {
+                container.innerHTML = "<p style='color: #ccc;'>No diary notes saved yet.</p>";
+                return;
+            }
+            userDiaryNotes.forEach((note, idx) => {
+                container.innerHTML += `
+                    <div class="info-card" style="border-color: var(--puja-gold);">
+                        <h4 style="color: var(--puja-gold); margin: 0 0 6px 0;">✨ ${note.title}</h4>
+                        <p style="margin: 0; font-size: 14px; color: #fcebeb;">${note.desc}</p>
+                        <button onclick="deleteDiaryNote(${idx})" style="background: #dc2626; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-top: 8px;">Delete Note</button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteDiaryNote(index) {
+            userDiaryNotes.splice(index, 1);
+            localStorage.setItem('portal_diary_notes', JSON.stringify(userDiaryNotes));
+            renderDiaryNotes();
+        }
+
+        function toggleDhunuchiGlowMode() {
+            document.body.classList.toggle('dhunuchi-glow-mode');
+            let isGlow = document.body.classList.contains('dhunuchi-glow-mode');
+            alert(isGlow ? "🔥 Dhunuchi Amber Glow Mode Enabled!" : "✨ Standard Festive Mode Restored.");
         }
 
         function savePandalsToStorage() { localStorage.setItem('portal_pandals', JSON.stringify(pandalsList)); }
@@ -2369,6 +2859,22 @@
             });
         }
 
+        function optimizeWishlistRoute() {
+            if (userWishlist.length === 0) {
+                alert("Please add at least 2 pandals to your Wishlist to optimize a smart route!");
+                return;
+            }
+            let container = document.getElementById('smart-route-items-container');
+            container.innerHTML = "";
+            let html = "<ol style='padding-left: 20px; line-height: 1.8; text-align: left;'>";
+            userWishlist.forEach((w, idx) => {
+                html += `<li><b style='color: var(--puja-gold);'>Stop ${idx + 1}:</b> ${w} (Optimized sequence for minimal traffic delay)</li>`;
+            });
+            html += "</ol>";
+            container.innerHTML = html;
+            showModal('smart-route-modal');
+        }
+
         function switchGreetingSection(secId) {
             ['cardmaker', 'booth'].forEach(id => {
                 const el = document.getElementById('greeting-sec-' + id);
@@ -2427,6 +2933,36 @@
 
         function printWishlist() {
             window.print();
+        }
+
+        function renderCommunityVotingPoll() {
+            let container = document.getElementById('voting-cards-container');
+            if (!container) return;
+            container.innerHTML = "";
+            let totalVotes = communityPollData.reduce((sum, item) => sum + item.votes, 0);
+
+            communityPollData.forEach((poll, idx) => {
+                let percent = totalVotes > 0 ? Math.round((poll.votes / totalVotes) * 100) : 0;
+                container.innerHTML += `
+                    <div class="info-card" style="border-color: var(--puja-gold);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h3 style="color: var(--puja-gold); margin: 0; font-size: 16px;">🏛️ ${poll.name}</h3>
+                            <button class="action-chip-btn" onclick="castPollVote(${idx})" style="background: var(--puja-red); color: white; border: none; padding: 6px 14px; border-radius: 8px; font-weight: bold; cursor: pointer;">👍 Vote (${poll.votes})</button>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.5); border-radius: 10px; height: 16px; overflow: hidden; border: 1px solid rgba(255,204,0,0.3);">
+                            <div style="background: linear-gradient(90deg, #d90429, #ffcc00); height: 100%; width: ${percent}%; transition: width 0.4s ease;"></div>
+                        </div>
+                        <div style="font-size: 12px; color: #ffdca8; margin-top: 5px; text-align: right;"><b>${percent}%</b> (${poll.votes} votes)</div>
+                    </div>
+                `;
+            });
+        }
+
+        function castPollVote(index) {
+            communityPollData[index].votes++;
+            localStorage.setItem('portal_poll_data', JSON.stringify(communityPollData));
+            renderCommunityVotingPoll();
+            confetti({ particleCount: 40, spread: 50, origin: { y: 0.6 } });
         }
 
         function drawGreetingCardCanvas() {
@@ -2526,9 +3062,9 @@
         function renderLiveNews() {
             let container = document.getElementById('live-news-container');
             let newsData = [
-                { category: "TRAFFIC & METRO", title: "Kolkata Police Issues Midnight Traffic Guide & All-Night Metro Timetable across Blue and Green Lines.", link: "https://www.anandabazar.com", time: "Just now" },
-                { category: "CEREMONY", title: "All India Radio to Air Birendra Krishna Bhadra's Chandi Path at 4:00 AM on Mahalaya dawn.", link: "https://www.youtube.com", time: "1 hour ago" },
-                { category: "SAFETY & CARNIVAL", title: "Ghats Prepared Across Bengal with Crane Visarjan & Water Filtering Ahead of Red Road Immersion Gala.", link: "https://www.anandabazar.com", time: "3 hours ago" }
+                { category: "Anandabazar Patrika", title: "Today News Anandabazar", link: "https://www.anandabazar.com", time: "Just now" },
+                { category: "Indiane Xpress", title: "Today News Indiane Xpress", link: "https://indianexpress.com/section/cities/kolkata/", time: "Just now" },
+                { category: "ABP Ananda LIVE", title: "Today News Live", link: "https://www.youtube.com/watch?v=PKwLsAu-z10", time: "Just now" }
             ];
 
             if (container) {
@@ -2542,10 +3078,10 @@
                     card.innerHTML = `
                         <div class="news-header-meta">
                             <span class="live-pulse-badge">🔴 LIVE</span>
-                            <span style="color: var(--puja-orange); font-weight: 700;">${news.category}</span>
                             <span class="news-time-text">⏱️ ${news.time}</span>
                         </div>
                         <div class="news-title-text">${news.title}</div>
+                        <div style="color: var(--puja-orange); font-weight: 700; font-size: 13px;">${news.category}</div>
                     `;
                     container.appendChild(card);
                 });
@@ -2654,7 +3190,7 @@
             tributeDeities[index].flowers++;
             saveTributeToStorage();
             renderTributeWall();
-            confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+            confetti({ particleCount: 60, spread: 70, origin: { y: 0.65 } });
         }
 
         let quizPool = [
@@ -2662,7 +3198,7 @@
             { q: { en: "Sandhi Puja takes place at the junction of which two lunar tithis?", bn: "সন্ধিপূজা কোন দুই তিথির মিলনকালে অনুষ্ঠিত হয়?", hi: "संधि पूजा किन दो तिथियों के मिलन पर होती है?" }, options: { en: ["Saptami & Ashtami", "Ashtami & Navami", "Navami & Dashami", "Sasthi & Saptami"], bn: ["সপ্তমী ও অষ্টমী", "অষ্টমী ও নবমী", "নবমী ও দশমী", "ষষ্ঠী ও সপ্তমী"], hi: ["सप्तमी और अष्टमी", "अष्टमी और नवमी", "नवमी और दशमी", "षष्ठी और सप्तमी"] }, correct: 1 },
             { q: { en: "Who recited the legendary Mahalaya Chandi Path in All India Radio?", bn: "মহালয়ার বিখ্যাত চণ্ডীপাঠ কার কণ্ঠে অমর হয়ে আছে?", hi: "रेडियो पर प्रसिद्ध महालया चंडी पाठ किसका है?" }, options: { en: ["Hemanta Mukherjee", "Birendra Krishna Bhadra", "Manna Dey", "Pankaj Mallick"], bn: ["হেমন্ত মুখোপাধ্যায়", "বীরেন্দ্রকৃষ্ণ ভদ্র", "মান্না দে", "পঙ্কজ মল্লিক"], hi: ["हेमंत मुखर्जी", "बीरेंद्र कृष्ण भद्र", "मन्ना डे", "पंकज मलिक"] }, correct: 1 },
             { q: { en: "How many arms and weapons does Goddess Durga traditionally hold?", bn: "মা দুর্গার ঐতিহ্যগতভাবে কয়টি হাত ও অস্ত্র থাকে?", hi: "पारंपरिक रूप से मां दुर्गा के कितने हाथ और अस्त्र होते हैं?" }, options: { en: ["8", "10", "12", "16"], bn: ["৮টি", "১০টি", "১২টি", "১৬টি"], hi: ["8", "10", "12", "16"] }, correct: 1 },
-            { q: { en: "Which flower is traditionally offered in count of 108 during Maha Ashtami Sandhi Puja?", bn: "মহাঅষ্টমীর সন্ধিপূজায় ঐতিহ্যগতভাবে কয়টি পদ্মফুল নিবেদন করা হয়?", hi: "महा अष्टमी संधि पूजा में पारंपरिक रूप से कितने कमल चढ़ाए जाते हैं?" }, options: { en: ["51", "108", "1008", "21"], bn: ["৫১টি", "১০৮টি", "১০০৮টি", "২১টি"], hi: ["51", "108", "1008", "21"] }, correct: 1 }
+            { q: { en: "Which flower is traditionally offered in count of 108 during Maha Ashtami Sandhi Puja?", bn: "মহাঅষ্টমীর সন্ধিপূজায় ঐতিহ্যগতভাবে কয়টি পদ্মফুল নিবেদন করা হয়?", hi: "महा अष्टमी संधि पूजा में पारंपरिक रूप से कितने कमल चढ़ाए जाते हैं?" }, options: { en: ["51", "108", "1008", "21"], bn: ["৫টি", "১০৮টি", "১০০৮টি", "২১টি"], hi: ["51", "108", "1008", "21"] }, correct: 1 }
         ];
 
         let currentQuizIndex = 0;
@@ -2792,7 +3328,7 @@
 
         const appTranslations = {
             en: {
-                homeBtn: "🏠 Home", monumentsBtn: "🏛️ Pandals", transitHubBtn: "🚦 Transit Hub", foodBtn: "🍲 Food Guide", carnivalBtn: "🎪 Carnival", sosBtn: "🚨 SOS", bhogBtn: "🍛 Bhog", greetingBoothBtn: "💌 Greeting & Booth", tributeBtn: "🌺 Pushpanjali", quizBtn: "⚡ Quiz", aboutBtn: "ℹ️ About", sharedMediaBtn: "📸 Gallery",
+                homeBtn: "🏠 Home", monumentsBtn: "🏛️ Pandals", transitHubBtn: "🚦 Transit Hub", foodBtn: "🍲 Food Guide", soundboardBtn: "🎶 Soundboard", recipesBtn: "📜 Recipes", diaryBtn: "📖 Diary", memoryGameBtn: "🎮 Memory Game", carnivalBtn: "🎪 Carnival", sosBtn: "🚨 SOS", bhogBtn: "🍛 Bhog", greetingBoothBtn: "💌 Greeting & Booth", tributeBtn: "🌺 Pushpanjali", quizBtn: "⚡ Quiz", votingBtn: "🗳️ Poll", aboutBtn: "ℹ️ About", sharedMediaBtn: "📸 Gallery",
                 mainHeading: "Subho Sharadiya & Happy Durga Puja!",
                 subHeading: "Explore Voice Guide, Routes, Traffic & Pandals 👇",
                 listTitle1: "Durga Puja 5-Day Sacred Schedule (Click any day for Live Stream)",
@@ -2801,7 +3337,7 @@
                 creatorText: "Created by Madan Basuli"
             },
             bn: {
-                homeBtn: "🏠 হোম", monumentsBtn: "🏛️ মণ্ডপ", transitHubBtn: "🚦 ট্রাভেল", foodBtn: "🍲 খাবার", carnivalBtn: "🎪 কার্নিভাল", sosBtn: "🚨 জরুরি", bhogBtn: "🍛 ভোগ", greetingBoothBtn: "💌 কার্ড ও বুথ", tributeBtn: "🌺 অঞ্জলি", quizBtn: "⚡ কুইজ", aboutBtn: "ℹ️ সম্পর্কে", sharedMediaBtn: "📸 গ্যালারি",
+                homeBtn: "🏠 হোম", monumentsBtn: "🏛️ মণ্ডপ", transitHubBtn: "🚦 ট্রাভেল", foodBtn: "🍲 খাবার", soundboardBtn: "🎶 সাউন্ডবোর্ড", recipesBtn: "📜 রেসিপি", diaryBtn: "📖 ডায়েরি", memoryGameBtn: "🎮 মেমরি গেম", carnivalBtn: "🎪 কার্নিভাল", sosBtn: "🚨 জরুরি", bhogBtn: "🍛 ভোগ", greetingBoothBtn: "💌 কার্ড ও বুথ", tributeBtn: "🌺 অঞ্জলি", quizBtn: "⚡ কুইজ", votingBtn: "🗳️ পোল", aboutBtn: "ℹ️ সম্পর্কে", sharedMediaBtn: "📸 গ্যালারি",
                 mainHeading: "॥ শুভ দুর্গোৎসব ও শুভ শারদীয়া ॥",
                 subHeading: "ভয়েস গাইড, ট্রাভেল রুট, মেট্রো, ট্রাফিক গাইড ও মণ্ডপ পরিক্রমা 👇",
                 listTitle1: "Durga Puja 5-Day Sacred Schedule (যে কোনো দিনে ক্লিক করে লাইভ দেখুন)",
@@ -2810,7 +3346,7 @@
                 creatorText: "তৈরি করেছেন: মদন বাসুলি (Madan Basuli)"
             },
             hi: {
-                homeBtn: "🏠 होम", monumentsBtn: "🏛️ पंडाल", transitHubBtn: "🚦 यात्रा", foodBtn: "🍲 भोजन", carnivalBtn: "🎪 कार्निवल", sosBtn: "🚨 हेल्प", bhogBtn: "🍛 भोग", greetingBoothBtn: "💌 कार्ड व बूथ", tributeBtn: "🌺 पुष्पांजलि", quizBtn: "⚡ क्विज़", aboutBtn: "ℹ️ परिचय", sharedMediaBtn: "📸 गैलरी",
+                homeBtn: "🏠 होम", monumentsBtn: "🏛️ पंडाल", transitHubBtn: "🚦 यात्रा", foodBtn: "🍲 भोजन", soundboardBtn: "🎶 साउंडबोर्ड", recipesBtn: "📜 रेसिपी", diaryBtn: "📖 डायरी", memoryGameBtn: "🎮 मेमोरी गेम", carnivalBtn: "🎪 कार्निवल", sosBtn: "🚨 हेल्प", bhogBtn: "🍛 भोग", greetingBoothBtn: "💌 कार्ड व बूथ", tributeBtn: "🌺 पुष्पांजलि", quizBtn: "⚡ क्विज़", votingBtn: "🗳️ पोल", aboutBtn: "ℹ️ परिचय", sharedMediaBtn: "📸 गैलरी",
                 mainHeading: "॥ शुभ शारदीय दुर्गा पूजा महोत्सव ॥",
                 subHeading: "वॉइस गाइड, रूट प्लानर, मेट्रो समय, ट्रैफिक गाइड व भव्य पंडाल दर्शन 👇",
                 listTitle1: "Durga Puja 5-Day Sacred Schedule (लाइव स्ट्रीम हेतु किसी भी दिन पर क्लिक करें)",
@@ -2828,12 +3364,17 @@
             document.getElementById('btn-monuments').innerText = t.monumentsBtn;
             document.getElementById('btn-transit-hub').innerText = t.transitHubBtn;
             document.getElementById('btn-food').innerText = t.foodBtn;
+            document.getElementById('btn-soundboard').innerText = t.soundboardBtn;
+            document.getElementById('btn-recipes').innerText = t.recipesBtn;
+            document.getElementById('btn-diary').innerText = t.diaryBtn;
+            document.getElementById('btn-memory-game').innerText = t.memoryGameBtn;
             document.getElementById('btn-carnival').innerText = t.carnivalBtn;
             document.getElementById('btn-sos').innerText = t.sosBtn;
             document.getElementById('btn-bhog').innerText = t.bhogBtn;
             document.getElementById('btn-greeting-booth').innerText = t.greetingBoothBtn;
             document.getElementById('btn-tribute').innerText = t.tributeBtn;
             document.getElementById('btn-random-quiz').innerText = t.quizBtn;
+            document.getElementById('btn-voting').innerText = t.votingBtn;
             document.getElementById('btn-about').innerText = t.aboutBtn;
             document.getElementById('btn-shared-media').innerText = t.sharedMediaBtn;
 
@@ -2849,20 +3390,34 @@
             renderMonuments();
             renderLiveNews();
             renderCurrentQuizQuestion();
+            renderCommunityVotingPoll();
+            renderDiaryNotes();
             drawGreetingCardCanvas();
         }
 
         window.onload = function() {
             document.getElementById('languageSelect').value = 'en';
 
+            // Auto-play music attempt on load
+            const audioEl = document.getElementById('bg-music');
+            if(audioEl) {
+                audioEl.play().catch(error => {
+                    console.log("Autoplay prevented by browser policy. User interaction required.");
+                });
+            }
+
             startPujaCountdown();
+            checkLiveWeatherAndUmbrella();
             renderDynamicSacredSchedule();
             renderTributeWall();
             renderMonuments();
             renderRestaurantsList();
             renderSharedMediaGallery();
             loadRandomQuiz();
+            initMemoryGame();
             renderLiveNews();
+            renderCommunityVotingPoll();
+            renderDiaryNotes();
             drawPhotoBoothCanvas();
             saveWishlistToStorage();
             drawGreetingCardCanvas();
@@ -2878,12 +3433,17 @@
                 'transit-detail-page-view',
                 'food-page-view', 
                 'restaurant-detail-page-view',
+                'soundboard-page-view',
+                'recipes-page-view',
+                'diary-page-view',
+                'memory-game-page-view',
                 'carnival-page-view', 
                 'sos-page-view', 
                 'bhog-page-view', 
                 'greeting-booth-page-view', 
                 'tribute-page-view', 
                 'random-quiz-page-view', 
+                'voting-page-view',
                 'about-us-page-view', 
                 'shared-media-page-view',
                 'pandal-detail-page-view',
@@ -2895,7 +3455,7 @@
                 if (el) el.style.display = 'none';
             });
 
-            const tabs = ['home', 'monuments', 'transit-hub', 'food', 'carnival', 'sos', 'bhog', 'greeting-booth', 'tribute', 'random-quiz', 'about', 'shared-media'];
+            const tabs = ['home', 'monuments', 'transit-hub', 'food', 'soundboard', 'recipes', 'diary', 'memory-game', 'carnival', 'sos', 'bhog', 'greeting-booth', 'tribute', 'random-quiz', 'voting', 'about', 'shared-media'];
             tabs.forEach(t => {
                 let btn = document.getElementById('btn-' + t);
                 if (btn) btn.classList.remove('active');
@@ -2939,10 +3499,14 @@
             if (tabName === 'home') {
                 renderDynamicSacredSchedule();
                 renderLiveNews();
+                checkLiveWeatherAndUmbrella();
             }
             if (tabName === 'food') renderRestaurantsList();
             if (tabName === 'shared-media') renderSharedMediaGallery();
             if (tabName === 'random-quiz') loadRandomQuiz();
+            if (tabName === 'memory-game') initMemoryGame();
+            if (tabName === 'voting') renderCommunityVotingPoll();
+            if (tabName === 'diary') renderDiaryNotes();
             if (tabName === 'monuments') renderMonuments();
             if (tabName === 'greeting-booth') switchGreetingSection('cardmaker');
             if (tabName === 'transit-hub') switchTransitSection('interactive-route');
@@ -2951,7 +3515,7 @@
         function showModal(modalId) {
             let overlay = document.getElementById('modal-overlay');
             if (overlay) overlay.style.display = 'flex';
-            ['wishlist-modal', 'feedback-modal'].forEach(id => {
+            ['wishlist-modal', 'smart-route-modal', 'feedback-modal'].forEach(id => {
                 let el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
